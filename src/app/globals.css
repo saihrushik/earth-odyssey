@@ -1,0 +1,557 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────────────
+   The Batman palette — near-black noir with glowing crimson red.
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+  --background: #060607;
+  --surface: #0d0d0f;
+  --surface-2: #131316;
+  --foreground: #ededee;
+  --muted: #a1a1aa;
+  --muted-2: #6b6b73;
+  --border: #232327;
+
+  --red: #e11d2a;
+  --red-bright: #ff2b3c;
+  --red-deep: #8f0f17;
+  --red-glow: rgba(225, 29, 42, 0.55);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-border: var(--border);
+  --color-red: var(--red);
+  --color-red-bright: var(--red-bright);
+  --color-red-deep: var(--red-deep);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Ambient noir backdrop: faint red bloom + carbon grid. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60rem 40rem at 75% -10%, rgba(225, 29, 42, 0.16), transparent 60%),
+    radial-gradient(50rem 40rem at 0% 100%, rgba(143, 15, 23, 0.12), transparent 55%);
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 80%);
+  pointer-events: none;
+}
+
+/* ── Glow utilities ── */
+.text-glow {
+  text-shadow: 0 0 18px var(--red-glow), 0 0 40px rgba(225, 29, 42, 0.25);
+}
+.box-glow {
+  box-shadow: 0 0 0 1px rgba(225, 29, 42, 0.35), 0 0 24px -4px var(--red-glow);
+}
+.box-glow-soft {
+  box-shadow: 0 0 40px -12px var(--red-glow);
+}
+
+/* Gradient text for the name / accents. */
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #ffd5d8 35%, var(--red-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Card surface with hover glow. */
+.card {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.025);
+  border-color: rgba(225, 29, 42, 0.7);
+  box-shadow: 0 18px 48px -12px var(--red-glow), 0 0 22px -6px var(--red-glow);
+}
+
+/* Section pop — the whole section eases forward when the cursor is over it. */
+.pop-section {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.5s ease;
+  transform: perspective(1600px) translateZ(0);
+  will-change: transform;
+}
+.pop-section:hover {
+  transform: perspective(1600px) translateZ(34px);
+  filter: brightness(1.05);
+}
+
+/* Pill / chip. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.78rem;
+  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.chip:hover {
+  color: #fff;
+  border-color: rgba(225, 29, 42, 0.6);
+  box-shadow: 0 0 16px -6px var(--red-glow);
+}
+
+/* ── Scroll-reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Animations ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink::after {
+  content: "_";
+  color: var(--red-bright);
+  animation: blink 1.1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  .animate-pulse-glow { animation: none; }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--red-deep), var(--red));
+  border-radius: 999px;
+  border: 2px solid var(--background);
+}
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   3D depth — perspective tilt cards
+   ─────────────────────────────────────────────────────────────────────── */
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+.tilt > * {
+  transform: translateZ(0);
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Orbit hub — Batman centered, sections revolving around him
+   ─────────────────────────────────────────────────────────────────────── */
+.orbit-stage {
+  width: min(82vmin, 540px);
+  height: min(82vmin, 540px);
+}
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 29, 42, 0.18);
+  box-shadow: inset 0 0 50px -16px var(--red-glow);
+  animation: pole-glow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+.orbit-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62%;
+  height: 62%;
+}
+/* Faint Batman silhouette framing the name. */
+.orbit-core-bat {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.3;
+}
+.orbit-core-name {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(6, 6, 7, 0.85),
+    rgba(6, 6, 7, 0.55) 66%,
+    transparent
+  );
+}
+.orbit-bat {
+  width: 78%;
+  height: 100%;
+  filter: drop-shadow(0 0 16px rgba(225, 29, 42, 0.45));
+  animation: orbit-float 5s ease-in-out infinite;
+}
+.orbit-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(13, 13, 15, 0.85);
+  backdrop-filter: blur(4px);
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease,
+    scale 0.25s ease;
+  will-change: transform;
+}
+.orbit-node:hover {
+  color: #fff;
+  border-color: rgba(225, 29, 42, 0.7);
+  box-shadow: 0 0 22px -6px var(--red-glow);
+  scale: 1.12;
+  z-index: 5;
+}
+.orbit-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red-bright);
+  box-shadow: 0 0 10px 1px var(--red-glow);
+}
+@keyframes orbit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Batman scroll guide — pole, pit, figure, grapple
+   ─────────────────────────────────────────────────────────────────────── */
+.bat-rail {
+  position: fixed;
+  top: 0;
+  right: clamp(6px, 2.5vw, 34px);
+  z-index: 40;
+  width: 92px;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* The pole he slides down, fading into the pit below. */
+.bat-pole {
+  position: absolute;
+  left: 50%;
+  top: 4vh;
+  bottom: 14vh;
+  width: 4px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--red-deep) 8%,
+    var(--red) 50%,
+    var(--red-deep) 88%,
+    transparent
+  );
+  border-radius: 999px;
+  box-shadow: 0 0 14px 1px var(--red-glow);
+  animation: pole-glow 3.5s ease-in-out infinite;
+}
+
+/* The deep hole at the bottom. */
+.bat-pit {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 45%,
+    #000 0 26%,
+    #150406 42%,
+    #060607 60%,
+    transparent 73%
+  );
+  box-shadow: 0 0 46px 12px rgba(225, 29, 42, 0.16), inset 0 6px 26px #000;
+}
+.bat-pit::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 29, 42, 0.3);
+  box-shadow: 0 0 0 7px rgba(225, 29, 42, 0.05),
+    inset 0 0 20px rgba(225, 29, 42, 0.3);
+  animation: pit-swirl 9s linear infinite;
+}
+.bat-pit::after {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 29, 42, 0.2);
+  animation: pit-swirl 6s linear infinite reverse;
+}
+
+/* The figure — positioned vertically by scroll progress. */
+.bat-figure {
+  position: absolute;
+  left: 50%;
+  width: 68px;
+  margin-left: -34px;
+  transition: top 0.1s linear;
+  filter: drop-shadow(0 0 12px rgba(225, 29, 42, 0.45));
+  animation: bat-glow 2.6s ease-in-out infinite;
+}
+.bat-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Speed streaks shown while sliding down. */
+.bat-streak {
+  position: absolute;
+  left: 50%;
+  top: -28px;
+  width: 2px;
+  height: 26px;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, var(--red-bright), transparent);
+  opacity: 0.7;
+}
+
+/* ── Poses & limb animation (figure grips the pole) ── */
+/* Animated SVG limbs pivot around joints in viewBox coordinates. */
+.bat-cape,
+.bat-arm-l,
+.bat-arm-r,
+.bat-leg-l,
+.bat-leg-r {
+  transform-box: view-box;
+}
+.bat-cape {
+  transform-origin: 30px 30px;
+  animation: cape-stream 1.2s ease-in-out infinite;
+}
+.bat-arm-l { transform-origin: 25px 39px; }
+.bat-arm-r { transform-origin: 35px 39px; }
+.bat-leg-l { transform-origin: 28px 54px; }
+.bat-leg-r { transform-origin: 32px 54px; }
+
+/* Sliding down: gentle bob + streaks, cape streams upward. */
+.bat-anim-slide {
+  animation: bat-bob 1.2s ease-in-out infinite;
+}
+/* Climbing up: hand-over-hand arms + kicking legs. */
+.bat-anim-climb {
+  animation: bat-bob 0.55s ease-in-out infinite;
+}
+.bat-anim-climb .bat-arm-l { animation: climb-arm-l 0.55s ease-in-out infinite; }
+.bat-anim-climb .bat-arm-r { animation: climb-arm-r 0.55s ease-in-out infinite; }
+.bat-anim-climb .bat-leg-l { animation: climb-leg-l 0.55s ease-in-out infinite; }
+.bat-anim-climb .bat-leg-r { animation: climb-leg-r 0.55s ease-in-out infinite; }
+.bat-anim-jump {
+  animation: bat-jump 0.7s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+@keyframes pole-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes pit-swirl {
+  to { transform: rotate(360deg); }
+}
+/* Sliding down: a loose wind-blown sway + slight downward stretch. */
+@keyframes bat-bob {
+  0%, 100% { transform: translateX(-1px) translateY(0) rotate(-2deg) scaleY(1); }
+  50% { transform: translateX(1px) translateY(3px) rotate(2deg) scaleY(1.05); }
+}
+@keyframes bat-glow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(225, 29, 42, 0.35)); }
+  50% { filter: drop-shadow(0 0 18px rgba(225, 29, 42, 0.6)); }
+}
+@keyframes bat-jump {
+  0% { transform: translateY(0) scale(1, 1); }
+  25% { transform: translateY(-30px) scale(0.84, 1.22); }
+  55% { transform: translateY(3px) scale(1.16, 0.82); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+@keyframes cape-stream {
+  0% { transform: rotate(-7deg) scaleY(0.96); }
+  50% { transform: rotate(6deg) scaleY(1.12); }
+  100% { transform: rotate(-7deg) scaleY(0.96); }
+}
+/* Climbing: each arm reaches up, grabs, and pulls down — out of phase. */
+@keyframes climb-arm-l {
+  0%, 100% { transform: translateY(2px) rotate(-14deg); }
+  50% { transform: translateY(-4px) rotate(12deg); }
+}
+@keyframes climb-arm-r {
+  0%, 100% { transform: translateY(-4px) rotate(12deg); }
+  50% { transform: translateY(2px) rotate(-14deg); }
+}
+@keyframes climb-leg-l {
+  0%, 100% { transform: rotate(14deg); }
+  50% { transform: rotate(-10deg); }
+}
+@keyframes climb-leg-r {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(14deg); }
+}
+
+/* ── Rotate-in-from-right reveal ── */
+.reveal-rotate {
+  opacity: 0;
+  transform: perspective(1100px) translateX(70px) rotateY(-32deg);
+  transform-origin: right center;
+  transition: opacity 0.8s ease, transform 0.85s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.reveal-rotate.is-visible {
+  opacity: 1;
+  transform: perspective(1100px) translateX(0) rotateY(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bat-anim-slide,
+  .bat-anim-climb,
+  .bat-anim-jump,
+  .bat-cape,
+  .bat-anim-climb .bat-arm-l,
+  .bat-anim-climb .bat-arm-r,
+  .bat-anim-climb .bat-leg-l,
+  .bat-anim-climb .bat-leg-r,
+  .bat-pit::before,
+  .bat-pit::after,
+  .bat-pole,
+  .bat-figure {
+    animation: none !important;
+  }
+  .bat-figure {
+    transition: none;
+  }
+  .pop-section,
+  .pop-section:hover {
+    transform: none;
+  }
+  .reveal-rotate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   EARTH ODYSSEY — glassmorphism layer
+   ─────────────────────────────────────────────────────────────────────── */
+.ody-glass {
+  background: linear-gradient(160deg, rgba(16, 24, 44, 0.62), rgba(8, 12, 24, 0.55));
+  border: 1px solid rgba(140, 180, 255, 0.14);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow: 0 24px 80px -24px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.ody-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(140, 180, 255, 0.16);
+  background: rgba(120, 170, 255, 0.06);
+  color: rgba(205, 222, 255, 0.85);
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+.ody-scroll::-webkit-scrollbar { width: 6px; }
+.ody-scroll::-webkit-scrollbar-track { background: transparent; }
+.ody-scroll::-webkit-scrollbar-thumb {
+  background: rgba(140, 180, 255, 0.25);
+  border: none;
+  border-radius: 999px;
+}
+@keyframes ody-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes ody-spin {
+  to { transform: rotate(360deg); }
+}
+.ody-selection ::selection { background: rgba(90, 150, 255, 0.55); color: #fff; }
+.ody-noscroll { scrollbar-width: none; }
+.ody-noscroll::-webkit-scrollbar { display: none; }

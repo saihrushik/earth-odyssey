@@ -1,0 +1,78 @@
+import type { Chapter } from "./types";
+
+export const CHAPTERS: Chapter[] = [
+  {
+    id: "wonders",
+    index: 0,
+    title: "Seven Wonders",
+    subtitle: "Monuments that outlived their empires",
+    accent: "#f5c451",
+    spaceTint: "#100c1c",
+    cameraDistance: 2.6,
+  },
+  {
+    id: "nature",
+    index: 1,
+    title: "Nature",
+    subtitle: "Where the planet shows off",
+    accent: "#5be3a2",
+    spaceTint: "#081410",
+    cameraDistance: 2.8,
+  },
+  {
+    id: "luxury",
+    index: 2,
+    title: "Luxury",
+    subtitle: "Overwater villas and slow mornings",
+    accent: "#7fd4ff",
+    spaceTint: "#0a1020",
+    cameraDistance: 2.5,
+  },
+  {
+    id: "adventure",
+    index: 3,
+    title: "Adventure",
+    subtitle: "Trails, canyons and thin air",
+    accent: "#ff8a5c",
+    spaceTint: "#160d08",
+    cameraDistance: 2.9,
+  },
+  {
+    id: "hidden",
+    index: 4,
+    title: "Hidden Gems",
+    subtitle: "Places the crowds haven't found",
+    accent: "#cd8bff",
+    spaceTint: "#120a1a",
+    cameraDistance: 2.7,
+  },
+  {
+    id: "history",
+    index: 5,
+    title: "Historical Places",
+    subtitle: "Walk through other centuries",
+    accent: "#e8b06b",
+    spaceTint: "#14100a",
+    cameraDistance: 2.6,
+  },
+  {
+    id: "festivals",
+    index: 6,
+    title: "Festivals",
+    subtitle: "The world at full volume",
+    accent: "#ff6bcb",
+    spaceTint: "#170a14",
+    cameraDistance: 2.7,
+  },
+  {
+    id: "food",
+    index: 7,
+    title: "Food",
+    subtitle: "Eat your way around the globe",
+    accent: "#ffd166",
+    spaceTint: "#141005",
+    cameraDistance: 2.5,
+  },
+];
+
+export const chapterById = (id: string) => CHAPTERS.find((c) => c.id === id);
