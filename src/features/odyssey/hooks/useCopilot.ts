@@ -47,7 +47,10 @@ export function useCopilot() {
       const res = await fetch("/api/copilot", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({
+          messages: history,
+          context: { focusedDestinationId: useOdyssey.getState().focusedDestinationId ?? undefined },
+        }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) throw new Error(`Copilot unavailable (${res.status})`);

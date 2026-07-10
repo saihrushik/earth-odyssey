@@ -21,7 +21,6 @@ function makeGlowTexture(inner: string, outer: string): THREE.Texture {
   return tex;
 }
 
-const METEOR_COUNT = 5;
 
 interface Meteor {
   active: boolean;
@@ -32,7 +31,8 @@ interface Meteor {
 }
 
 /** Slow-drifting starfield, a distant sun glow, and occasional meteor streaks. */
-export function SpaceField({ sun }: { sun: THREE.Vector3 }) {
+export function SpaceField({ sun, perf }: { sun: THREE.Vector3; perf: boolean }) {
+  const METEOR_COUNT = perf ? 2 : 5;
   const starsRef = useRef<THREE.Group>(null);
   const sunSpriteRef = useRef<THREE.Sprite>(null);
   const meteorRefs = useRef<(THREE.Mesh | null)[]>([]);
@@ -49,7 +49,7 @@ export function SpaceField({ sun }: { sun: THREE.Vector3 }) {
         life: 0,
         cooldown: 2 + Math.random() * 9,
       })),
-    [],
+    [METEOR_COUNT],
   );
 
   useFrame((_, delta) => {
@@ -92,7 +92,15 @@ export function SpaceField({ sun }: { sun: THREE.Vector3 }) {
   return (
     <group>
       <group ref={starsRef}>
-        <Stars radius={60} depth={40} count={6500} factor={3.2} saturation={0.15} fade speed={0.6} />
+        <Stars
+          radius={60}
+          depth={40}
+          count={perf ? 2400 : 6500}
+          factor={3.2}
+          saturation={0.15}
+          fade
+          speed={0.6}
+        />
       </group>
 
       {/* Distant sun — bloom turns this into a soft flare. */}

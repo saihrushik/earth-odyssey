@@ -58,4 +58,12 @@ npm install
 npm run dev   # http://localhost:3000
 ```
 
-Optional: set `OPENAI_API_KEY` (and `OPENAI_MODEL`) in `.env.local` to switch the copilot from the offline engine to GPT tool-calling.
+## Environment variables (all optional)
+
+| Variable | Enables |
+| --- | --- |
+| `OPENAI_API_KEY` (+ `OPENAI_MODEL`) | GPT tool-calling copilot instead of the offline engine |
+| `AMADEUS_CLIENT_ID` + `AMADEUS_CLIENT_SECRET` | Live flight quotes (free test keys: developers.amadeus.com); otherwise flights are transparent distance/season estimates |
+| `GOOGLE_MAPS_API_KEY` | Live Google Places ratings on stay recommendations |
+
+Weather (current + 16-day forecasts via Open-Meteo) and currency (Frankfurter/ECB) are live with no keys.

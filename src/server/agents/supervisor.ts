@@ -14,7 +14,15 @@ export type ExpertId =
   | "safety-expert"
   | "food-expert"
   | "packing-expert"
+  | "flight-expert"
+  | "hotel-expert"
   | "itinerary-generator";
+
+export interface TravelDates {
+  departISO: string;
+  returnISO: string;
+  explicit: boolean;
+}
 
 export interface Intents {
   budgetUSD?: number;
@@ -28,6 +36,56 @@ export interface Intents {
   wantsSafety: boolean;
   wantsFood: boolean;
   wantsPacking: boolean;
+  wantsFlights: boolean;
+  wantsStays: boolean;
+  wantsBestTime: boolean;
+  wantsEntryFee: boolean;
+  /** A question about one specific place rather than a discovery request. */
+  directQuestion: boolean;
+  dates?: TravelDates;
+}
+
+const MONTHS = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+/** Parse travel dates: "Dec 10-20", "in march", "next week", "2026-08-01". */
+export function parseTravelDates(q: string, tripDays = 7): TravelDates | undefined {
+  const now = new Date();
+
+  const isoRange = q.match(/(\d{4}-\d{2}-\d{2})(?:\s*(?:to|-|until|through)\s*(\d{4}-\d{2}-\d{2}))?/);
+  if (isoRange) {
+    const dep = new Date(isoRange[1]);
+    const ret = isoRange[2] ? new Date(isoRange[2]) : new Date(dep.getTime() + tripDays * 86_400_000);
+    return { departISO: iso(dep), returnISO: iso(ret), explicit: true };
+  }
+
+  const monthIdx = MONTHS.findIndex((m) => new RegExp(`\\b${m.slice(0, 3)}[a-z]*\\b`).test(q));
+  if (monthIdx >= 0) {
+    // "december 10-20" / "10 december" / bare month
+    const dayRange = q.match(new RegExp(`${MONTHS[monthIdx].slice(0, 3)}[a-z]*\\s+(\\d{1,2})(?:\\s*[-–to]+\\s*(\\d{1,2}))?`)) ??
+      q.match(new RegExp(`(\\d{1,2})(?:st|nd|rd|th)?(?:\\s*[-–to]+\\s*(\\d{1,2})(?:st|nd|rd|th)?)?\\s+${MONTHS[monthIdx].slice(0, 3)}[a-z]*`));
+    const year = monthIdx < now.getMonth() || (monthIdx === now.getMonth() && now.getDate() > 25) ? now.getFullYear() + 1 : now.getFullYear();
+    const startDay = dayRange ? parseInt(dayRange[1], 10) : 10;
+    const dep = new Date(Date.UTC(year, monthIdx, startDay));
+    const endDay = dayRange?.[2] ? parseInt(dayRange[2], 10) : startDay + tripDays;
+    const ret = new Date(Date.UTC(year, monthIdx + (endDay < startDay ? 1 : 0), endDay));
+    return { departISO: iso(dep), returnISO: iso(ret), explicit: !!dayRange };
+  }
+
+  if (/\bnext week\b/.test(q)) {
+    const dep = new Date(now.getTime() + 7 * 86_400_000);
+    return { departISO: iso(dep), returnISO: iso(new Date(dep.getTime() + tripDays * 86_400_000)), explicit: true };
+  }
+  if (/\bnext month\b/.test(q)) {
+    const dep = new Date(Date.UTC(now.getFullYear(), now.getMonth() + 1, 10));
+    return { departISO: iso(dep), returnISO: iso(new Date(dep.getTime() + tripDays * 86_400_000)), explicit: true };
+  }
+  if (/\b(this weekend|tomorrow)\b/.test(q)) {
+    const dep = new Date(now.getTime() + (q.includes("tomorrow") ? 1 : 5 - now.getDay()) * 86_400_000);
+    return { departISO: iso(dep), returnISO: iso(new Date(dep.getTime() + 3 * 86_400_000)), explicit: true };
+  }
+  return undefined;
 }
 
 const TAG_KEYWORDS: [RegExp, string][] = [
@@ -52,6 +110,7 @@ const TAG_KEYWORDS: [RegExp, string][] = [
   [/\bdesert\b/, "desert"],
   [/\bstargaz\w*|dark sky\b/, "stargazing"],
   [/\brelax\w*|unwind|slow travel\b/, "relaxation"],
+  [/\bsunsets?\b|golden hour/, "sunset"],
 ];
 
 /** Tag aliases used when scoring destinations (dataset tags are richer than intents). */
@@ -92,6 +151,15 @@ export function analyzeIntents(query: string): Intents {
     )?.id;
   }
 
+  const wantsFlights = /\bflights?|fly|airfare|plane|airlines?\b/.test(q) || /\bticket (price|cost)s?\b.*\b(fly|flight|plane)\b/.test(q);
+  const wantsEntryFee = /\b(entry|entrance|admission)\s*(fee|price|cost|ticket)|how much (is|does).*(entry|ticket|cost to (enter|visit))|ticket price/.test(q) && !wantsFlights;
+  const wantsBestTime = /\bbest (time|season|month)\b|\bwhen (should|to|is the best)\b/.test(q);
+  const wantsStays = /\bhotels?|stays?|hostels?|resorts?|accommodation|airbnb|where (to|should i) (stay|sleep)\b/.test(q);
+
+  const discovery = /\b(show|find|recommend|suggest|places|destinations|where (should|can) i go|ideas)\b/.test(q);
+  const directQuestion = mentionedDestIds.length > 0 && !discovery &&
+    (wantsBestTime || wantsEntryFee || wantsFlights || wantsStays || /\bvisas?|safe|weather|food|how much|cost/.test(q));
+
   return {
     budgetUSD,
     days,
@@ -104,6 +172,12 @@ export function analyzeIntents(query: string): Intents {
     wantsSafety: /\bsafe\w*|danger\w*\b/.test(q),
     wantsFood: /\bfood\w*|eat\w*|cuisine|restaurant\w*\b/.test(q),
     wantsPacking: /\bpack\w*|bring|gear|clothes\b/.test(q),
+    wantsFlights,
+    wantsStays,
+    wantsBestTime,
+    wantsEntryFee,
+    directQuestion,
+    dates: parseTravelDates(q, days ?? 7),
   };
 }
 
@@ -115,6 +189,8 @@ export function selectExperts(intents: Intents): ExpertId[] {
   if (intents.wantsSafety) experts.push("safety-expert");
   if (intents.wantsFood) experts.push("food-expert");
   if (intents.wantsPacking) experts.push("packing-expert");
+  if (intents.wantsFlights || intents.dates) experts.push("flight-expert");
+  if (intents.wantsStays) experts.push("hotel-expert");
   if (intents.days !== undefined) experts.push("itinerary-generator");
   return experts;
 }

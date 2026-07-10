@@ -1,8 +1,12 @@
 import { destinationById } from "@/features/odyssey/data/destinations";
 import { retrieve } from "../rag/retriever";
-import { getCurrentWeather } from "../tools/weather";
+import { getCurrentWeather, getForecast } from "../tools/weather";
 import { convertCurrency } from "../tools/currency";
 import { distanceBetween } from "../tools/geoTools";
+import { getFlightQuote, findOriginHub } from "../tools/flights";
+import { getStays } from "../tools/hotels";
+import { destinationById as destById } from "@/features/odyssey/data/destinations";
+import type { CopilotContext } from "./offline";
 import { analyzeIntents, selectExperts } from "../agents/supervisor";
 import { buildSystemPrompt } from "../prompts/system";
 import type { ChatMessage, Citation, CopilotEvent, GlobeAction } from "./protocol";
@@ -68,6 +72,51 @@ const TOOLS = [
   {
     type: "function",
     function: {
+      name: "get_flights",
+      description: "Round-trip flight price for a destination. Live Amadeus quote when configured, transparent estimate otherwise (result says which).",
+      parameters: {
+        type: "object",
+        properties: {
+          destinationId: { type: "string" },
+          originCity: { type: "string", description: "Departure city, e.g. 'New York'" },
+          departDate: { type: "string", description: "YYYY-MM-DD" },
+          returnDate: { type: "string", description: "YYYY-MM-DD" },
+        },
+        required: ["destinationId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_stays",
+      description: "Curated stay recommendations (budget/mid/luxury) with nightly rates for a destination.",
+      parameters: {
+        type: "object",
+        properties: { destinationId: { type: "string" } },
+        required: ["destinationId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_forecast",
+      description: "Daily weather forecast for a destination and date range (horizon 16 days). Returns null past the horizon — then reason from the best season instead.",
+      parameters: {
+        type: "object",
+        properties: {
+          destinationId: { type: "string" },
+          startDate: { type: "string", description: "YYYY-MM-DD" },
+          endDate: { type: "string", description: "YYYY-MM-DD" },
+        },
+        required: ["destinationId", "startDate", "endDate"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
       name: "control_globe",
       description: "Drive the 3D globe: highlight recommended destinations, fly to the top pick, toggle aurora.",
       parameters: {
@@ -127,6 +176,24 @@ async function executeTool(
         return {
           result: JSON.stringify(await convertCurrency(Number(args.amount), String(args.from), String(args.to))),
         };
+      case "get_flights": {
+        const origin = args.originCity ? findOriginHub(`from ${String(args.originCity)}`) : null;
+        const quote = await getFlightQuote(
+          String(args.destinationId ?? ""),
+          origin,
+          args.departDate ? String(args.departDate) : undefined,
+          args.returnDate ? String(args.returnDate) : undefined,
+        );
+        return { result: quote ? JSON.stringify(quote) : "Unknown destination id." };
+      }
+      case "get_stays":
+        return { result: JSON.stringify(await getStays(String(args.destinationId ?? ""))) };
+      case "get_forecast": {
+        const dest = destById(String(args.destinationId ?? ""));
+        if (!dest) return { result: "Unknown destination id." };
+        const fc = await getForecast(dest.lat, dest.lng, String(args.startDate ?? ""), String(args.endDate ?? ""));
+        return { result: fc ? JSON.stringify(fc) : "Dates beyond the 16-day forecast horizon — use the destination's best season." };
+      }
       case "distance_between": {
         const km = distanceBetween(String(args.a ?? ""), String(args.b ?? ""));
         return { result: km === null ? "Unknown destination id." : `${km} km` };
@@ -150,7 +217,11 @@ async function executeTool(
   }
 }
 
-export async function* runLlmCopilot(messages: ChatMessage[], apiKey: string): AsyncGenerator<CopilotEvent> {
+export async function* runLlmCopilot(
+  messages: ChatMessage[],
+  apiKey: string,
+  context: CopilotContext = {},
+): AsyncGenerator<CopilotEvent> {
   const query = messages.filter((m) => m.role === "user").at(-1)?.content ?? "";
   const experts = selectExperts(analyzeIntents(query));
   const model = process.env.OPENAI_MODEL ?? "gpt-4.1";
@@ -158,8 +229,11 @@ export async function* runLlmCopilot(messages: ChatMessage[], apiKey: string): A
   yield { type: "meta", engine: `openai/${model}`, experts };
 
   const citations: Citation[] = [];
+  const focusNote = context.focusedDestinationId
+    ? `\n\nThe user is currently looking at "${context.focusedDestinationId}" on the globe — unqualified questions ("best time to visit?", "how much are tickets?") refer to it.`
+    : "";
   const convo: OpenAIMessage[] = [
-    { role: "system", content: buildSystemPrompt(experts) },
+    { role: "system", content: buildSystemPrompt(experts) + focusNote },
     ...messages.map((m) => ({ role: m.role, content: m.content })),
   ];
 

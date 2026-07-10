@@ -23,6 +23,16 @@ const EarthScene = dynamic(() => import("./scene/EarthScene").then((m) => m.Eart
 
 export default function OdysseyExperience() {
   const setReducedMotion = useOdyssey((s) => s.setReducedMotion);
+  const setPerfMode = useOdyssey((s) => s.setPerfMode);
+
+  // Performance mode defaults ON for modest hardware (8GB Retina Macs, phones),
+  // OFF for machines with plenty of cores or a non-Retina display.
+  useEffect(() => {
+    const nav = navigator as Navigator & { deviceMemory?: number };
+    const lowMemory = nav.deviceMemory !== undefined && nav.deviceMemory <= 4;
+    const modestMac = window.devicePixelRatio >= 2 && navigator.hardwareConcurrency <= 8;
+    setPerfMode(lowMemory || modestMac);
+  }, [setPerfMode]);
 
   // Honor prefers-reduced-motion: flights become jumps, auto-rotate stops.
   useEffect(() => {

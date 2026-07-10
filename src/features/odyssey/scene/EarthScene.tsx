@@ -47,11 +47,13 @@ export function EarthScene() {
   // Per-Canvas sun direction. Never module-level: React StrictMode, HMR or a
   // second canvas would create competing frame loops fighting over it.
   const sun = useMemo(() => INITIAL_SUN_DIR.clone(), []);
+  const perf = useOdyssey((s) => s.perfMode);
   return (
     <Canvas
-      dpr={[1, 2]}
+      key={perf ? "perf" : "quality"} // dpr/postprocessing changes need a fresh context
+      dpr={perf ? [1, 1.25] : [1, 2]}
       camera={{ position: [0, 0.6, 4.6], fov: 42, near: 0.1, far: 200 }}
-      gl={{ antialias: true, powerPreference: "high-performance" }}
+      gl={{ antialias: true, powerPreference: perf ? "low-power" : "high-performance" }}
       style={{ position: "absolute", inset: 0 }}
     >
       <ChapterMood />
@@ -59,8 +61,8 @@ export function EarthScene() {
       <SunLight sun={sun} />
 
       <Suspense fallback={null}>
-        <SpaceField sun={sun} />
-        <Earth sun={sun} />
+        <SpaceField sun={sun} perf={perf} />
+        <Earth sun={sun} perf={perf} />
         <Atmosphere sun={sun} />
         <Aurora />
         <Moon />
@@ -70,10 +72,13 @@ export function EarthScene() {
 
       <CameraRig />
 
-      <EffectComposer>
-        <Bloom intensity={0.75} luminanceThreshold={0.25} luminanceSmoothing={0.7} mipmapBlur />
-        <Vignette eskil={false} offset={0.18} darkness={0.72} />
-      </EffectComposer>
+      {/* Post-processing doubles GPU cost — skipped in performance mode. */}
+      {!perf && (
+        <EffectComposer>
+          <Bloom intensity={0.75} luminanceThreshold={0.25} luminanceSmoothing={0.7} mipmapBlur />
+          <Vignette eskil={false} offset={0.18} darkness={0.72} />
+        </EffectComposer>
+      )}
     </Canvas>
   );
 }

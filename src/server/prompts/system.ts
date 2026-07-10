@@ -9,6 +9,8 @@ const EXPERT_PERSONAS: Record<ExpertId, string> = {
   "safety-expert": "Give calm, specific safety guidance without fearmongering.",
   "food-expert": "Name specific dishes and where to eat them, not generic 'try local food' advice.",
   "packing-expert": "Give a short climate-appropriate packing list.",
+  "flight-expert": "Quote flight prices with the get_flights tool; say plainly whether the number is a live quote or an estimate, and name plausible airlines.",
+  "hotel-expert": "Recommend the curated stays from get_stays across budget/mid/luxury tiers with nightly rates.",
   "itinerary-generator": "Sketch a day-by-day outline that respects travel times between stops.",
 };
 
@@ -19,7 +21,7 @@ export function buildSystemPrompt(experts: ExpertId[]): string {
 
 You control the globe. After deciding which destinations you are recommending, ALWAYS call control_globe exactly once with: highlight for every recommended destination id, flyTo for the single best one, and aurora true when northern lights are the topic.
 
-Ground factual claims with the search_knowledge tool (RAG over the travel knowledge base) and cite live data from get_weather / convert_currency / distance_between when relevant. If the user asks about a place outside the catalog, answer from general knowledge but say it isn't on the globe yet.
+Ground factual claims with the search_knowledge tool (RAG over the travel knowledge base) and cite live data from get_weather / get_forecast / get_flights / get_stays / convert_currency / distance_between when relevant. For trip planning always include: flight price (say if it's an estimate vs live quote), 2–3 stay options with nightly rates, and weather for the travel dates (or seasonal expectations when dates are far out). Entry fees for headline sights are in the knowledge base. If the user asks about a place outside the catalog, answer from general knowledge but say it isn't on the globe yet.
 
 Active expert lenses for this request:
 ${experts.map((e) => `- ${e}: ${EXPERT_PERSONAS[e]}`).join("\n")}

@@ -172,7 +172,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Sidemen valley rice walks", "Nusa Penida's Kelingking cliff", "Munduk waterfalls in the highlands", "Amed's black-sand freediving bays"],
     nearby: ["Gili Islands", "Lombok & Mount Rinjani", "Komodo National Park (flight)"],
     tripDays: "7–10 days",
-    tags: ["beach", "surf", "yoga", "romantic", "luxury", "budget-friendly", "festivals", "photography"],
+    tags: ["beach", "surf", "yoga", "romantic", "luxury", "budget-friendly", "festivals", "photography", "sunset"],
     timezone: "Asia/Makassar",
   },
   {
@@ -308,7 +308,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Pyrgos village's quiet lanes", "Emporio's medieval kasteli", "Vlychada's lunar cliffs", "Wine tasting at sunset in Megalochori"],
     nearby: ["Ios & Naxos by ferry", "Crete", "Milos, the sculpted island"],
     tripDays: "3–4 days",
-    tags: ["romantic", "luxury", "food", "wine", "photography", "beach", "honeymoon"],
+    tags: ["romantic", "luxury", "food", "wine", "photography", "beach", "honeymoon", "sunset"],
     timezone: "Europe/Athens",
   },
   {
@@ -376,7 +376,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Libreria Acqua Alta bookshop", "Cannaregio's quiet canals", "Burano & Torcello islands", "San Giorgio Maggiore's bell-tower view (skip the San Marco queue)"],
     nearby: ["Verona", "Dolomites (2h)", "Padua's Scrovegni Chapel"],
     tripDays: "2–3 days",
-    tags: ["romantic", "history", "festivals", "food", "photography", "unesco", "honeymoon"],
+    tags: ["romantic", "history", "festivals", "food", "photography", "unesco", "honeymoon", "sunset"],
     timezone: "Europe/Rome",
   },
   {
@@ -410,7 +410,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Ohara's rural temples", "Kurama-to-Kibune forest hike", "Fushimi sake district", "Daitoku-ji's quiet zen sub-temples"],
     nearby: ["Nara's deer & Great Buddha (45 min)", "Osaka's street food (30 min)", "Himeji Castle (1h)"],
     tripDays: "3–5 days",
-    tags: ["history", "food", "festivals", "photography", "anime", "romantic", "family", "unesco"],
+    tags: ["history", "food", "festivals", "photography", "anime", "romantic", "family", "unesco", "sunset"],
     timezone: "Asia/Tokyo",
   },
   {
@@ -444,7 +444,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Local-island guesthouses (Thoddoo, Dhigurah) at a tenth of resort prices", "Fuvahmulah's tiger shark diving", "Utheemu's historic palace"],
     nearby: ["Sri Lanka (90-min flight)", "Southern India"],
     tripDays: "4–7 days",
-    tags: ["luxury", "beach", "romantic", "honeymoon", "diving", "snorkeling", "relaxation"],
+    tags: ["luxury", "beach", "romantic", "honeymoon", "diving", "snorkeling", "relaxation", "sunset"],
     timezone: "Indian/Maldives",
   },
   {
@@ -478,7 +478,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Lake Motosu (the ¥1000-note view)", "Fujiyoshida's retro Honcho Street", "Shiraito Falls' silk curtains"],
     nearby: ["Hakone hot springs", "Tokyo (100 km)", "Izu Peninsula"],
     tripDays: "2–3 days",
-    tags: ["hiking", "photography", "anime", "nature", "spiritual", "unesco"],
+    tags: ["hiking", "photography", "anime", "nature", "spiritual", "unesco", "sunset"],
     timezone: "Asia/Tokyo",
   },
   {
@@ -580,7 +580,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Ihlara Valley canyon monasteries", "Soğanlı's quiet chimneys", "Mustafapaşa's Greek mansions", "Pottery town Avanos"],
     nearby: ["Konya (whirling dervishes)", "Mount Erciyes skiing", "Istanbul (flight)"],
     tripDays: "2–4 days",
-    tags: ["balloons", "photography", "romantic", "history", "unesco", "caves", "budget-friendly"],
+    tags: ["balloons", "photography", "romantic", "history", "unesco", "caves", "budget-friendly", "sunset"],
     timezone: "Europe/Istanbul",
   },
   {
@@ -614,7 +614,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Shoshone Point's quiet overlook", "Toroweap's 900-m sheer drop (4x4)", "Cape Royal moonrise on the North Rim"],
     nearby: ["Antelope Canyon & Horseshoe Bend (Page)", "Sedona's red rocks", "Monument Valley"],
     tripDays: "2–3 days (add 4 for rafting)",
-    tags: ["hiking", "nature", "photography", "roadtrip", "family", "stargazing", "unesco"],
+    tags: ["hiking", "nature", "photography", "roadtrip", "family", "stargazing", "unesco", "sunset"],
     timezone: "America/Phoenix",
   },
   {
@@ -648,7 +648,7 @@ export const DESTINATIONS: Destination[] = [
     hiddenGems: ["Anau's quiet manta cleaning station", "WWII coastal guns hike", "Matira's public beach picnics beside $2,000 resorts"],
     nearby: ["Moorea", "Taha'a vanilla island", "Rangiroa's dive atoll"],
     tripDays: "4–5 days",
-    tags: ["luxury", "honeymoon", "beach", "romantic", "diving", "snorkeling", "relaxation"],
+    tags: ["luxury", "honeymoon", "beach", "romantic", "diving", "snorkeling", "relaxation", "sunset"],
     timezone: "Pacific/Tahiti",
   },
 ];

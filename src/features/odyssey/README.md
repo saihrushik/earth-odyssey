@@ -42,6 +42,11 @@ client applies to the zustand store; the camera rig, hotspots and aurora shader 
   live weather tools, composing answers from the supervisor's intent analysis. The whole
   experience works with zero configuration.
 
+Trip data: flights are live Amadeus quotes when `AMADEUS_CLIENT_ID/SECRET` are set, otherwise
+clearly-labelled estimates from distance + seasonality; stays are a curated shortlist of real
+properties (Google Places ratings when `GOOGLE_MAPS_API_KEY` is set); weather uses Open-Meteo
+current conditions and 16-day forecasts for parsed travel dates, no key needed.
+
 The vector store is in-process behind a two-method `VectorStore` interface — swap in
 Qdrant/Pinecone by implementing `upsert`/`search`.
 

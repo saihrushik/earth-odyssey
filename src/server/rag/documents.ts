@@ -1,4 +1,5 @@
 import { DESTINATIONS } from "@/features/odyssey/data/destinations";
+import { ENTRY_FEES } from "@/features/odyssey/data/travel";
 
 export interface KnowledgeDoc {
   id: string;
@@ -30,7 +31,7 @@ export function buildKnowledgeBase(): KnowledgeDoc[] {
       destinationId: d.id,
       title: `${d.name} — practical guide`,
       tags: [...d.tags, "visa", "budget", "season", "safety", "transport"],
-      text: `Practical guide for ${d.name}, ${d.country}. Best season: ${d.bestSeason}. Daily budget in USD: backpacker $${d.budgetPerDay.backpacker}, mid-range $${d.budgetPerDay.midrange}, luxury $${d.budgetPerDay.luxury}. Suggested trip length: ${d.tripDays}. Visa: ${d.visa} Language: ${d.language}. Currency: ${d.currencyName} (${d.currency}). Safety: ${d.safety} Getting there and around: ${d.transport}`,
+      text: `Practical guide for ${d.name}, ${d.country}. Best season: ${d.bestSeason}. Daily budget in USD: backpacker $${d.budgetPerDay.backpacker}, mid-range $${d.budgetPerDay.midrange}, luxury $${d.budgetPerDay.luxury}. Suggested trip length: ${d.tripDays}. Visa: ${d.visa} Language: ${d.language}. Currency: ${d.currencyName} (${d.currency}). Entry fees: ${ENTRY_FEES[d.id] ?? "varies by sight"}. Safety: ${d.safety} Getting there and around: ${d.transport}`,
     });
     docs.push({
       id: `${d.id}:experience`,

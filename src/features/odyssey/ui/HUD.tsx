@@ -35,6 +35,10 @@ export function HUD() {
   const soundOn = useOdyssey((s) => s.soundOn);
   const nightSide = useOdyssey((s) => s.nightSide);
   const auroraActive = useOdyssey((s) => s.auroraActive);
+  const stylized = useOdyssey((s) => s.visualStyle === "stylized");
+  const perfMode = useOdyssey((s) => s.perfMode);
+  const toggleVisualStyle = useOdyssey((s) => s.toggleVisualStyle);
+  const setPerfMode = useOdyssey((s) => s.setPerfMode);
   const copilotOpen = useOdyssey((s) => s.copilotOpen);
   const toggleSound = useOdyssey((s) => s.toggleSound);
   const toggleNightSide = useOdyssey((s) => s.toggleNightSide);
@@ -67,6 +71,20 @@ export function HUD() {
         </HudButton>
         <HudButton label="Toggle aurora" active={auroraActive} onClick={() => setAurora(!auroraActive)}>
           ᨒ
+        </HudButton>
+        <HudButton
+          label={stylized ? "Switch to realistic globe" : "Switch to illustrated globe"}
+          active={stylized}
+          onClick={toggleVisualStyle}
+        >
+          ✎
+        </HudButton>
+        <HudButton
+          label={perfMode ? "Performance mode on (battery-friendly)" : "Quality mode on"}
+          active={perfMode}
+          onClick={() => setPerfMode(!perfMode)}
+        >
+          ⚡
         </HudButton>
         <button
           onClick={() => setCopilotOpen(!copilotOpen)}

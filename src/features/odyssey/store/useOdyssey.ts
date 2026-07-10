@@ -32,6 +32,10 @@ interface OdysseyState {
   auroraActive: boolean;
   nightSide: boolean;
   soundOn: boolean;
+  /** Flat, illustrated globe look vs. photoreal textures. */
+  visualStyle: "stylized" | "realistic";
+  /** Reduced GPU load: lower DPR, no post-processing, fewer particles. */
+  perfMode: boolean;
   copilotOpen: boolean;
   cameraIntent: CameraIntent | null;
   reducedMotion: boolean;
@@ -47,6 +51,8 @@ interface OdysseyState {
   setAurora: (active: boolean) => void;
   toggleNightSide: () => void;
   toggleSound: () => void;
+  toggleVisualStyle: () => void;
+  setPerfMode: (on: boolean) => void;
   setCopilotOpen: (open: boolean) => void;
   setReducedMotion: (v: boolean) => void;
   applyCopilotActions: (actions: CopilotAction[]) => void;
@@ -70,6 +76,8 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
   auroraActive: false,
   nightSide: false,
   soundOn: false,
+  visualStyle: "stylized",
+  perfMode: true,
   copilotOpen: false,
   cameraIntent: null,
   reducedMotion: false,
@@ -150,6 +158,9 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
   setAurora: (active) => set({ auroraActive: active }),
   toggleNightSide: () => set((s) => ({ nightSide: !s.nightSide })),
   toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
+  toggleVisualStyle: () =>
+    set((s) => ({ visualStyle: s.visualStyle === "stylized" ? "realistic" : "stylized" })),
+  setPerfMode: (on) => set({ perfMode: on }),
   setCopilotOpen: (open) => set({ copilotOpen: open }),
   setReducedMotion: (v) => set({ reducedMotion: v }),
 
