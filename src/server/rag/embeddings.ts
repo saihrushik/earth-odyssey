@@ -1,17 +1,20 @@
 /**
  * Embedding provider.
  *
- * With OPENAI_API_KEY set, uses OpenAI `text-embedding-3-large`.
+ * With OPENAI_API_KEY set, uses OpenAI `text-embedding-3-small` (overridable
+ * via OPENAI_EMBED_MODEL / EMBED_DIM — Atlas index dimensions must match).
  * Without it, falls back to a deterministic local hashing embedder
  * (character-trigram TF vectors hashed into a fixed dimension) so the
- * whole RAG pipeline works offline. Both are L2-normalized so the
- * vector store can rank by plain dot product.
+ * whole RAG pipeline works offline. Both are L2-normalized so vector
+ * stores can rank by plain dot product / cosine.
  */
 
 const LOCAL_DIM = 384;
+const OPENAI_BATCH = 128;
 
 export interface Embedder {
   name: string;
+  dim: number;
   embed(texts: string[]): Promise<number[][]>;
 }
 
@@ -51,24 +54,37 @@ function localEmbedOne(text: string): number[] {
 }
 
 const localEmbedder: Embedder = {
-  name: "local-hash-384",
+  name: `local-hash-${LOCAL_DIM}`,
+  dim: LOCAL_DIM,
   async embed(texts) {
     return texts.map(localEmbedOne);
   },
 };
 
 function makeOpenAIEmbedder(apiKey: string): Embedder {
+  const model = process.env.OPENAI_EMBED_MODEL ?? "text-embedding-3-small";
+  const dim = Number(process.env.EMBED_DIM ?? 1536);
+
+  async function embedBatch(texts: string[]): Promise<number[][]> {
+    const res = await fetch("https://api.openai.com/v1/embeddings", {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({ model, input: texts, dimensions: dim }),
+    });
+    if (!res.ok) throw new Error(`Embedding request failed: ${res.status} ${await res.text()}`);
+    const json = (await res.json()) as { data: { index: number; embedding: number[] }[] };
+    return json.data.sort((a, b) => a.index - b.index).map((d) => d.embedding);
+  }
+
   return {
-    name: "openai/text-embedding-3-large",
+    name: `openai/${model}@${dim}`,
+    dim,
     async embed(texts) {
-      const res = await fetch("https://api.openai.com/v1/embeddings", {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${apiKey}` },
-        body: JSON.stringify({ model: "text-embedding-3-large", input: texts, dimensions: 1024 }),
-      });
-      if (!res.ok) throw new Error(`Embedding request failed: ${res.status} ${await res.text()}`);
-      const json = (await res.json()) as { data: { index: number; embedding: number[] }[] };
-      return json.data.sort((a, b) => a.index - b.index).map((d) => d.embedding);
+      const out: number[][] = [];
+      for (let i = 0; i < texts.length; i += OPENAI_BATCH) {
+        out.push(...(await embedBatch(texts.slice(i, i + OPENAI_BATCH))));
+      }
+      return out;
     },
   };
 }

@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  // Keep the MongoDB driver out of the bundler; it's server-only.
+  serverExternalPackages: ["mongodb"],
 };
 
 export default nextConfig;

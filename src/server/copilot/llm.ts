@@ -1,5 +1,5 @@
 import { destinationById } from "@/features/odyssey/data/destinations";
-import { retrieve } from "../rag/retriever";
+import { retrieve, condenseQuery } from "../rag/retriever";
 import { getCurrentWeather, getForecast } from "../tools/weather";
 import { convertCurrency } from "../tools/currency";
 import { distanceBetween } from "../tools/geoTools";
@@ -12,8 +12,15 @@ import { buildSystemPrompt } from "../prompts/system";
 import type { ChatMessage, Citation, CopilotEvent, GlobeAction } from "./protocol";
 
 /**
- * LLM copilot engine — OpenAI chat completions with streaming + tool calling,
- * spoken over plain fetch/SSE so there is no SDK version drift.
+ * LLM copilot engine — retrieve-then-generate RAG over OpenAI chat completions
+ * with streaming + tool calling, spoken over plain fetch/SSE so there is no
+ * SDK version drift.
+ *
+ * Runtime flow: conversation history + user question → condensed query →
+ * embedding → vector search (Atlas or in-memory) → top-5 chunks → prompt
+ * construction (system + retrieved context + history + question) → GPT-4.1.
+ * Tools remain available for live data (weather, flights, stays, FX) and for
+ * follow-up retrieval; the globe is driven via the control_globe tool.
  */
 
 const TOOLS = [
@@ -229,11 +236,24 @@ export async function* runLlmCopilot(
   yield { type: "meta", engine: `openai/${model}`, experts };
 
   const citations: Citation[] = [];
+
+  // Retrieve-then-generate: condense history + question, vector-search the
+  // knowledge base, and place the top-5 chunks into the prompt up front.
+  const { docs: retrieved } = await retrieve(condenseQuery(messages), 5);
+  for (const d of retrieved) {
+    if (!citations.some((c) => c.id === d.doc.id)) citations.push({ id: d.doc.id, title: d.doc.title });
+  }
+  const contextBlock = retrieved.length
+    ? `\n\nRetrieved context (ranked, cite what you use, ignore what's irrelevant):\n${retrieved
+        .map((d, i) => `[${i + 1}] ${d.doc.title}\n${d.doc.text.slice(0, 1200)}`)
+        .join("\n\n")}`
+    : "";
+
   const focusNote = context.focusedDestinationId
     ? `\n\nThe user is currently looking at "${context.focusedDestinationId}" on the globe — unqualified questions ("best time to visit?", "how much are tickets?") refer to it.`
     : "";
   const convo: OpenAIMessage[] = [
-    { role: "system", content: buildSystemPrompt(experts) + focusNote },
+    { role: "system", content: buildSystemPrompt(experts) + contextBlock + focusNote },
     ...messages.map((m) => ({ role: m.role, content: m.content })),
   ];
 

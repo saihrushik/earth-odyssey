@@ -150,6 +150,19 @@ async function* streamText(text: string): AsyncGenerator<CopilotEvent> {
   }
 }
 
+/** Destination the conversation is already about — parsed from the last assistant reply. */
+function referencedDestId(messages: ChatMessage[]): string | undefined {
+  const lastAssistant = messages.filter((m) => m.role === "assistant").at(-1)?.content ?? "";
+  for (const m of lastAssistant.matchAll(/\*\*([^*]+)\*\*/g)) {
+    const name = m[1].toLowerCase();
+    const hit = DESTINATIONS.find(
+      (d) => name.includes(d.name.toLowerCase()) || d.name.toLowerCase().includes(name),
+    );
+    if (hit) return hit.id;
+  }
+  return undefined;
+}
+
 export async function* runOfflineCopilot(
   messages: ChatMessage[],
   context: CopilotContext = {},
@@ -161,7 +174,8 @@ export async function* runOfflineCopilot(
   yield { type: "meta", engine: "odyssey-offline", experts };
 
   // ---- Direct question about one place: answer it, don't re-list places. --
-  const subjectId = intents.mentionedDestIds[0] ?? context.focusedDestinationId;
+  // Subject priority: explicitly named > carried from the conversation > globe focus.
+  const subjectId = intents.mentionedDestIds[0] ?? referencedDestId(messages) ?? context.focusedDestinationId;
   const subject = subjectId ? destinationById(subjectId) : undefined;
   const discovery = /\b(show|find|recommend|suggest|places|destinations|ideas|where (should|can) i go)\b/.test(
     query.toLowerCase(),
