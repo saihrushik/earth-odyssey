@@ -42,3 +42,9 @@ next-env.d.ts
 
 # Claude Code local files
 /.claude/
+
+# python backend
+backend/.venv/
+backend/chroma-data/
+backend/__pycache__/
+**/__pycache__/

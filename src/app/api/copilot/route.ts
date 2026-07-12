@@ -20,6 +20,32 @@ export async function POST(request: Request) {
     return Response.json({ error: "Body must be { messages: [{ role, content }] }" }, { status: 400 });
   }
 
+  // When a Python RAG backend is configured (backend/ — FastAPI + ChromaDB +
+  // Ollama), proxy the stream through. Falls back to the built-in TS engine
+  // if the backend is down, so the copilot never goes dark.
+  const backendUrl = process.env.COPILOT_BACKEND_URL;
+  if (backendUrl) {
+    try {
+      const upstream = await fetch(`${backendUrl.replace(/\/$/, "")}/api/copilot`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages, context }),
+        signal: AbortSignal.timeout(120_000),
+      });
+      if (upstream.ok && upstream.body) {
+        return new Response(upstream.body, {
+          headers: {
+            "content-type": "application/x-ndjson; charset=utf-8",
+            "cache-control": "no-store",
+          },
+        });
+      }
+      console.warn(`[copilot] python backend responded ${upstream.status} — using built-in engine`);
+    } catch (err) {
+      console.warn(`[copilot] python backend unreachable — using built-in engine: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+
   const encoder = new TextEncoder();
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {

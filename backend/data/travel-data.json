@@ -1,0 +1,2136 @@
+{
+ "generatedAt": "2026-07-12T04:52:23.831Z",
+ "destinations": [
+  {
+   "id": "taj-mahal",
+   "name": "Taj Mahal",
+   "country": "India",
+   "region": "Agra, Uttar Pradesh",
+   "tagline": "A marble love letter on the Yamuna",
+   "lat": 27.1751,
+   "lng": 78.0421,
+   "chapters": [
+    "wonders",
+    "history"
+   ],
+   "unesco": true,
+   "bestSeason": "October – March (cool, clear mornings)",
+   "budgetPerDay": {
+    "backpacker": 25,
+    "midrange": 70,
+    "luxury": 250
+   },
+   "visa": "e-Visa available online for 170+ nationalities, usually issued in 72 hours.",
+   "language": "Hindi (English widely spoken at sights)",
+   "currency": "INR",
+   "currencyName": "Indian Rupee",
+   "safety": "Generally safe around Agra's tourist zone; watch for touts and keep valuables close in crowds.",
+   "history": "Commissioned in 1632 by Mughal emperor Shah Jahan as a mausoleum for his wife Mumtaz Mahal, the Taj took some 20,000 artisans over two decades to complete. Its white Makrana marble is inlaid with jasper, jade and turquoise in floral pietra dura.",
+   "facts": [
+    "The four minarets lean slightly outward so they would fall away from the tomb in an earthquake.",
+    "The marble shifts color through the day — pink at dawn, white at noon, gold under the moon.",
+    "Shah Jahan spent his last years imprisoned in Agra Fort, gazing at the Taj across the river.",
+    "The entire complex is a giant sundial of symmetry; only Shah Jahan's own cenotaph breaks it."
+   ],
+   "attractions": [
+    "Main mausoleum at sunrise",
+    "Mehtab Bagh river view",
+    "Agra Fort",
+    "Charbagh gardens",
+    "Great Gate (Darwaza-i-Rauza)"
+   ],
+   "food": [
+    "Petha (crystallized pumpkin sweet)",
+    "Mughlai kebabs",
+    "Bedai & jalebi breakfast",
+    "Dal moth namkeen"
+   ],
+   "transport": "Gatimaan Express from Delhi in ~100 minutes; autos and e-rickshaws inside Agra. The Taj is closed on Fridays.",
+   "hiddenGems": [
+    "Itimad-ud-Daulah ('Baby Taj')",
+    "Korai village camel path viewpoint",
+    "Agra's spice market in Kinari Bazaar"
+   ],
+   "nearby": [
+    "Fatehpur Sikri (40 km)",
+    "Delhi (230 km)",
+    "Jaipur — the Golden Triangle (240 km)"
+   ],
+   "tripDays": "1–2 days (pair with Delhi & Jaipur for 5–6)",
+   "tags": [
+    "architecture",
+    "romantic",
+    "photography",
+    "unesco",
+    "monument",
+    "budget-friendly"
+   ],
+   "timezone": "Asia/Kolkata"
+  },
+  {
+   "id": "great-wall",
+   "name": "Great Wall of China",
+   "country": "China",
+   "region": "Mutianyu / Jinshanling, near Beijing",
+   "tagline": "A dragon of stone across the mountains",
+   "lat": 40.4319,
+   "lng": 116.5704,
+   "chapters": [
+    "wonders",
+    "history",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "September – November (golden foliage, crisp air)",
+   "budgetPerDay": {
+    "backpacker": 40,
+    "midrange": 100,
+    "luxury": 320
+   },
+   "visa": "Visa-free transit up to 240 hours for many nationalities; otherwise L tourist visa via embassy.",
+   "language": "Mandarin Chinese",
+   "currency": "CNY",
+   "currencyName": "Chinese Yuan",
+   "safety": "Very safe; the main risks are steep unrestored sections and summer heat — bring grippy shoes and water.",
+   "history": "Built and rebuilt across two millennia — from Qin dynasty rammed earth to the iconic Ming brick fortifications of the 14th–17th centuries — the Wall stretches over 21,000 km of walls, trenches and natural barriers designed to control the northern frontier.",
+   "facts": [
+    "It is not visible from the Moon with the naked eye, despite the legend.",
+    "Sticky rice mortar helped Ming sections survive 600 years of earthquakes.",
+    "Over 25,000 watchtowers once relayed smoke signals along the frontier.",
+    "Jiankou's unrestored ridge is nicknamed 'the arrow nock' for its shape."
+   ],
+   "attractions": [
+    "Mutianyu cable car & toboggan descent",
+    "Jinshanling sunrise hike",
+    "Simatai night section",
+    "Juyongguan pass",
+    "Gubei Water Town"
+   ],
+   "food": [
+    "Peking duck in Beijing",
+    "Zhajiangmian noodles",
+    "Chuan'r lamb skewers",
+    "Jianbing breakfast crepes"
+   ],
+   "transport": "Direct buses and trains from Beijing; Mutianyu is ~90 minutes by car. Avoid Badaling on weekends — it takes the crowds.",
+   "hiddenGems": [
+    "Jiankou wild wall (experienced hikers)",
+    "Huanghuacheng lakeside wall",
+    "Chenjiapu village homestays"
+   ],
+   "nearby": [
+    "Beijing's Forbidden City",
+    "Summer Palace",
+    "Ming Tombs"
+   ],
+   "tripDays": "1–2 days on the Wall (4–5 with Beijing)",
+   "tags": [
+    "hiking",
+    "history",
+    "photography",
+    "unesco",
+    "monument",
+    "adventure"
+   ],
+   "timezone": "Asia/Shanghai"
+  },
+  {
+   "id": "machu-picchu",
+   "name": "Machu Picchu",
+   "country": "Peru",
+   "region": "Cusco Region, Andes",
+   "tagline": "The lost city above the clouds",
+   "lat": -13.1631,
+   "lng": -72.545,
+   "chapters": [
+    "wonders",
+    "history",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "May – September (dry season; June is clearest)",
+   "budgetPerDay": {
+    "backpacker": 35,
+    "midrange": 90,
+    "luxury": 400
+   },
+   "visa": "Visa-free for up to 90 days for most of the Americas, EU, UK, Australia and Japan.",
+   "language": "Spanish and Quechua",
+   "currency": "PEN",
+   "currencyName": "Peruvian Sol",
+   "safety": "Safe at the site; acclimatize in Cusco (3,400 m) for altitude, and book entry permits well ahead.",
+   "history": "A 15th-century royal estate of Inca emperor Pachacuti, abandoned during the Spanish conquest and never found by the conquistadors. Hiram Bingham brought it to world attention in 1911, revealing terraces and temples engineered without mortar to survive centuries of earthquakes.",
+   "facts": [
+    "Stones are cut so precisely a knife blade cannot fit between them.",
+    "The Intihuatana stone aligns exactly with the sun at the winter solstice.",
+    "About 60% of the construction is underground — foundations and drainage.",
+    "Daily visitors are capped, and permits for the Inca Trail sell out months out."
+   ],
+   "attractions": [
+    "Sun Gate (Inti Punku) arrival",
+    "Huayna Picchu climb",
+    "Temple of the Sun",
+    "Sacred Valley villages",
+    "Ollantaytambo fortress"
+   ],
+   "food": [
+    "Cuy (roast guinea pig) for the brave",
+    "Lomo saltado",
+    "Choclo con queso",
+    "Coca tea for the altitude"
+   ],
+   "transport": "Train from Cusco/Ollantaytambo to Aguas Calientes, then a 25-minute bus. Or hike: 4-day Inca Trail / Salkantay trek.",
+   "hiddenGems": [
+    "Moray's circular terraces",
+    "Maras salt pans",
+    "The lesser-hiked Lares trek"
+   ],
+   "nearby": [
+    "Cusco (110 km)",
+    "Rainbow Mountain",
+    "Lake Titicaca (overnight)"
+   ],
+   "tripDays": "3–5 days including Cusco acclimatization",
+   "tags": [
+    "hiking",
+    "history",
+    "unesco",
+    "adventure",
+    "photography",
+    "bucket-list"
+   ],
+   "timezone": "America/Lima"
+  },
+  {
+   "id": "swiss-alps",
+   "name": "Swiss Alps",
+   "country": "Switzerland",
+   "region": "Zermatt / Interlaken / Grindelwald",
+   "tagline": "Peaks that invented the postcard",
+   "lat": 46.0207,
+   "lng": 7.7491,
+   "chapters": [
+    "nature",
+    "adventure",
+    "luxury"
+   ],
+   "unesco": true,
+   "bestSeason": "June – September for hiking; December – March for skiing",
+   "budgetPerDay": {
+    "backpacker": 90,
+    "midrange": 220,
+    "luxury": 600
+   },
+   "visa": "Schengen visa rules apply; visa-free 90 days for US, UK, and many others.",
+   "language": "German, French, Italian, Romansh (English everywhere touristy)",
+   "currency": "CHF",
+   "currencyName": "Swiss Franc",
+   "safety": "Extremely safe; alpine weather changes fast — check forecasts before high routes.",
+   "history": "Carved by ice-age glaciers and first 'touristified' by 19th-century British alpinists, the Swiss Alps turned mountaineering into a sport — Whymper's 1865 Matterhorn ascent both triumph and tragedy — and rail engineering into an art form.",
+   "facts": [
+    "The Jungfraujoch rail station sits at 3,454 m — Europe's highest.",
+    "Switzerland has more than 65,000 km of marked hiking trails.",
+    "The Aletsch Glacier is the largest in the Alps at ~20 km long.",
+    "Zermatt has been car-free since the 1960s; electric taxis only."
+   ],
+   "attractions": [
+    "Matterhorn from Gornergrat railway",
+    "Jungfraujoch 'Top of Europe'",
+    "Lauterbrunnen's 72 waterfalls",
+    "Lake Oeschinen",
+    "Glacier Express panoramic train"
+   ],
+   "food": [
+    "Cheese fondue & raclette",
+    "Rösti",
+    "Älplermagronen (alpine mac & cheese)",
+    "Swiss chocolate straight from the source"
+   ],
+   "transport": "The Swiss Travel Pass covers trains, buses, boats and many cable cars — the rail network reaches absurdly high places.",
+   "hiddenGems": [
+    "Val Verzasca's emerald pools",
+    "Appenzell's Aescher cliff inn",
+    "Lötschental, the 'magic valley'"
+   ],
+   "nearby": [
+    "Lucerne",
+    "Chamonix-Mont-Blanc (France)",
+    "Milan (3h by rail)"
+   ],
+   "tripDays": "5–7 days",
+   "tags": [
+    "hiking",
+    "skiing",
+    "nature",
+    "luxury",
+    "photography",
+    "family",
+    "trains"
+   ],
+   "timezone": "Europe/Zurich"
+  },
+  {
+   "id": "bali",
+   "name": "Bali",
+   "country": "Indonesia",
+   "region": "Ubud / Uluwatu / Sidemen",
+   "tagline": "Island of temples, terraces and surf",
+   "lat": -8.4095,
+   "lng": 115.1889,
+   "chapters": [
+    "nature",
+    "luxury",
+    "festivals"
+   ],
+   "unesco": true,
+   "bestSeason": "April – October (dry season)",
+   "budgetPerDay": {
+    "backpacker": 30,
+    "midrange": 80,
+    "luxury": 350
+   },
+   "visa": "Visa on arrival (30 days, extendable once) for 90+ nationalities.",
+   "language": "Indonesian & Balinese (English in tourist areas)",
+   "currency": "IDR",
+   "currencyName": "Indonesian Rupiah",
+   "safety": "Friendly and safe; rent scooters only if experienced, respect temple dress codes and ocean rip currents.",
+   "history": "A Hindu island in the world's largest Muslim-majority nation, Bali preserved a unique Majapahit-era culture of water temples and subak rice irrigation — a thousand-year-old cooperative system UNESCO recognizes as a living landscape.",
+   "facts": [
+    "Nyepi, the Day of Silence, shuts down the entire island — even the airport.",
+    "The subak irrigation system has run continuously since the 9th century.",
+    "Bali has over 20,000 temples — more temples than homes, locals joke.",
+    "Canggu and Uluwatu host some of Asia's most consistent surf breaks."
+   ],
+   "attractions": [
+    "Tegallalang rice terraces",
+    "Uluwatu cliff temple & kecak dance",
+    "Sacred Monkey Forest, Ubud",
+    "Mount Batur sunrise trek",
+    "Tirta Empul water blessing"
+   ],
+   "food": [
+    "Babi guling (suckling pig)",
+    "Nasi campur",
+    "Sate lilit",
+    "Fresh smoothie bowls in Canggu"
+   ],
+   "transport": "Scooters and private drivers rule; Gojek/Grab apps for rides. No trains — plan around traffic.",
+   "hiddenGems": [
+    "Sidemen valley rice walks",
+    "Nusa Penida's Kelingking cliff",
+    "Munduk waterfalls in the highlands",
+    "Amed's black-sand freediving bays"
+   ],
+   "nearby": [
+    "Gili Islands",
+    "Lombok & Mount Rinjani",
+    "Komodo National Park (flight)"
+   ],
+   "tripDays": "7–10 days",
+   "tags": [
+    "beach",
+    "surf",
+    "yoga",
+    "romantic",
+    "luxury",
+    "budget-friendly",
+    "festivals",
+    "photography",
+    "sunset"
+   ],
+   "timezone": "Asia/Makassar"
+  },
+  {
+   "id": "banff",
+   "name": "Banff National Park",
+   "country": "Canada",
+   "region": "Alberta, Canadian Rockies",
+   "tagline": "Turquoise lakes under granite cathedrals",
+   "lat": 51.4968,
+   "lng": -115.9281,
+   "chapters": [
+    "nature",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "June – September (lakes thawed); January – March for ice magic",
+   "budgetPerDay": {
+    "backpacker": 70,
+    "midrange": 160,
+    "luxury": 450
+   },
+   "visa": "eTA (electronic travel authorization) for visa-exempt air travellers; standard visitor visa otherwise.",
+   "language": "English (and French)",
+   "currency": "CAD",
+   "currencyName": "Canadian Dollar",
+   "safety": "Very safe; carry bear spray on trails and check avalanche bulletins in winter.",
+   "history": "Canada's first national park (1885) grew from hot springs discovered by railway workers into a 6,641 km² wilderness. The Canadian Pacific Railway built castle hotels to lure Victorian tourists — 'since we can't export the scenery, we shall import the tourists.'",
+   "facts": [
+    "Lake Louise's color comes from glacial 'rock flour' suspended in meltwater.",
+    "Moraine Lake appeared on Canada's old $20 bill — the 'Twenty Dollar View'.",
+    "The park hosts grizzlies, wolves, elk and over 260 bird species.",
+    "Banff town sits at 1,383 m — the highest town in Canada."
+   ],
+   "attractions": [
+    "Moraine Lake sunrise",
+    "Lake Louise & Plain of Six Glaciers tea house",
+    "Icefields Parkway drive",
+    "Peyto Lake viewpoint",
+    "Banff Gondola up Sulphur Mountain"
+   ],
+   "food": [
+    "Alberta beef steak",
+    "Poutine after a hike",
+    "Maple-glazed salmon",
+    "BeaverTails pastry"
+   ],
+   "transport": "Fly to Calgary, then 90-minute drive. Park shuttles serve Moraine Lake (private cars banned there).",
+   "hiddenGems": [
+    "Johnston Canyon's frozen falls ice walk",
+    "Sunshine Meadows wildflowers",
+    "Lake Minnewanka winter bubbles"
+   ],
+   "nearby": [
+    "Jasper via Icefields Parkway",
+    "Yoho's Emerald Lake",
+    "Kananaskis Country"
+   ],
+   "tripDays": "4–6 days",
+   "tags": [
+    "hiking",
+    "nature",
+    "wildlife",
+    "photography",
+    "family",
+    "skiing",
+    "roadtrip"
+   ],
+   "timezone": "America/Edmonton"
+  },
+  {
+   "id": "yellowstone",
+   "name": "Yellowstone",
+   "country": "United States",
+   "region": "Wyoming / Montana / Idaho",
+   "tagline": "A supervolcano dressed as a park",
+   "lat": 44.428,
+   "lng": -110.5885,
+   "chapters": [
+    "nature",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "May – September (all roads open); winter for wolves and steam",
+   "budgetPerDay": {
+    "backpacker": 60,
+    "midrange": 150,
+    "luxury": 400
+   },
+   "visa": "US ESTA visa waiver for eligible nationalities; B-2 visitor visa otherwise.",
+   "language": "English",
+   "currency": "USD",
+   "currencyName": "US Dollar",
+   "safety": "Stay on boardwalks — thermal ground is thin crust; keep 100 yards from bears and wolves, 25 from bison.",
+   "history": "The world's first national park (1872) sits atop a caldera 70 km across. Its plumbing powers more than 10,000 hydrothermal features — half of all geysers on Earth — while the 1995 wolf reintroduction became ecology's most famous comeback story.",
+   "facts": [
+    "Old Faithful erupts every 60–110 minutes, up to 55 m high.",
+    "Grand Prismatic Spring's rainbow rings are heat-loving microbe mats.",
+    "The caldera last erupted catastrophically ~640,000 years ago.",
+    "Yellowstone Lake is North America's largest high-elevation lake."
+   ],
+   "attractions": [
+    "Grand Prismatic overlook",
+    "Old Faithful & Upper Geyser Basin",
+    "Grand Canyon of the Yellowstone",
+    "Lamar Valley wildlife safaris",
+    "Mammoth Hot Springs terraces"
+   ],
+   "food": [
+    "Bison burgers",
+    "Huckleberry ice cream",
+    "Trout from Montana rivers",
+    "Cowboy cookouts near Jackson"
+   ],
+   "transport": "Fly to Bozeman or Jackson Hole; a car is essential — the Grand Loop road is 225 km.",
+   "hiddenGems": [
+    "Fairy Falls trail to the Prismatic overlook",
+    "Firehole River swim area",
+    "Beartooth Highway approach from the northeast"
+   ],
+   "nearby": [
+    "Grand Teton National Park",
+    "Jackson Hole",
+    "Cody, Wyoming"
+   ],
+   "tripDays": "3–5 days",
+   "tags": [
+    "nature",
+    "wildlife",
+    "geothermal",
+    "family",
+    "roadtrip",
+    "photography",
+    "hiking"
+   ],
+   "timezone": "America/Denver"
+  },
+  {
+   "id": "iceland",
+   "name": "Iceland",
+   "country": "Iceland",
+   "region": "Ring Road / South Coast",
+   "tagline": "Fire, ice and roads that end in waterfalls",
+   "lat": 64.9631,
+   "lng": -19.0208,
+   "chapters": [
+    "nature",
+    "adventure",
+    "hidden"
+   ],
+   "unesco": true,
+   "bestSeason": "June – August for midnight sun; September – March for aurora",
+   "budgetPerDay": {
+    "backpacker": 80,
+    "midrange": 200,
+    "luxury": 500
+   },
+   "visa": "Schengen rules; visa-free 90 days for many nationalities.",
+   "language": "Icelandic (universal English)",
+   "currency": "ISK",
+   "currencyName": "Icelandic Króna",
+   "safety": "One of the safest countries on Earth; the real hazards are weather and F-roads — check road.is daily.",
+   "history": "Settled by Norse seafarers in 874 AD, Iceland hosts the world's oldest parliament (Althing, 930 AD) and sits astride the Mid-Atlantic Ridge — the island literally grows 2 cm a year as the American and Eurasian plates pull apart.",
+   "facts": [
+    "Þingvellir is the only place you can snorkel between two continents.",
+    "There are no mosquitoes in Iceland. None.",
+    "Roughly 30 volcanic systems are active; eruptions near Grindavík reshaped maps in the 2020s.",
+    "Hot water in Reykjavík homes comes straight from geothermal boreholes."
+   ],
+   "attractions": [
+    "Golden Circle (Gullfoss, Geysir, Þingvellir)",
+    "Jökulsárlón glacier lagoon",
+    "Seljalandsfoss & Skógafoss",
+    "Reynisfjara black-sand beach",
+    "Blue Lagoon or Sky Lagoon"
+   ],
+   "food": [
+    "Lamb soup (kjötsúpa)",
+    "Skyr",
+    "Hot dogs at Bæjarins Beztu",
+    "Rye bread baked in geothermal ground"
+   ],
+   "transport": "Rent a car for the Ring Road (1,332 km); 4x4 needed for highland F-roads in summer only.",
+   "hiddenGems": [
+    "Westfjords' Dynjandi waterfall",
+    "Landmannalaugar rhyolite hills",
+    "Stuðlagil basalt canyon",
+    "Ice caves under Vatnajökull (winter)"
+   ],
+   "nearby": [
+    "Greenland (flightseeing)",
+    "Faroe Islands (flights from Reykjavík)"
+   ],
+   "tripDays": "7–10 days for the Ring Road",
+   "tags": [
+    "aurora",
+    "waterfalls",
+    "glaciers",
+    "roadtrip",
+    "photography",
+    "hiking",
+    "geothermal",
+    "crowdsfree"
+   ],
+   "timezone": "Atlantic/Reykjavik"
+  },
+  {
+   "id": "santorini",
+   "name": "Santorini",
+   "country": "Greece",
+   "region": "Cyclades, Aegean Sea",
+   "tagline": "White villages on a drowned volcano",
+   "lat": 36.3932,
+   "lng": 25.4615,
+   "chapters": [
+    "luxury",
+    "history",
+    "food"
+   ],
+   "unesco": false,
+   "bestSeason": "Late April – June & September – October (warm, thinner crowds)",
+   "budgetPerDay": {
+    "backpacker": 60,
+    "midrange": 150,
+    "luxury": 500
+   },
+   "visa": "Schengen rules; visa-free 90 days for many nationalities.",
+   "language": "Greek (English in tourism)",
+   "currency": "EUR",
+   "currencyName": "Euro",
+   "safety": "Very safe; caldera-edge paths have big drops, and summer sun is fierce.",
+   "history": "Around 1600 BC the Thera eruption — one of history's largest — blew the island's center into the sea, burying the Minoan town of Akrotiri in ash and possibly seeding the Atlantis legend. Today's villages balance on the caldera rim it left behind.",
+   "facts": [
+    "Akrotiri's frescoes survived 3,600 years under volcanic ash.",
+    "Santorini's tomatoes and fava grow in pure volcanic soil without irrigation.",
+    "Assyrtiko vines are coiled into basket shapes against the meltemi wind.",
+    "The caldera cliffs rise 300 m straight from the sea."
+   ],
+   "attractions": [
+    "Oia sunset (go early, or watch from Imerovigli)",
+    "Akrotiri excavations",
+    "Caldera-edge hike Fira→Oia",
+    "Red Beach",
+    "Catamaran caldera cruise with hot springs"
+   ],
+   "food": [
+    "Tomatokeftedes (tomato fritters)",
+    "Fava me koukia",
+    "Grilled octopus with Assyrtiko wine",
+    "Loukoumades with honey"
+   ],
+   "transport": "Ferries and flights from Athens; buses connect villages, ATVs and rental cars for freedom.",
+   "hiddenGems": [
+    "Pyrgos village's quiet lanes",
+    "Emporio's medieval kasteli",
+    "Vlychada's lunar cliffs",
+    "Wine tasting at sunset in Megalochori"
+   ],
+   "nearby": [
+    "Ios & Naxos by ferry",
+    "Crete",
+    "Milos, the sculpted island"
+   ],
+   "tripDays": "3–4 days",
+   "tags": [
+    "romantic",
+    "luxury",
+    "food",
+    "wine",
+    "photography",
+    "beach",
+    "honeymoon",
+    "sunset"
+   ],
+   "timezone": "Europe/Athens"
+  },
+  {
+   "id": "petra",
+   "name": "Petra",
+   "country": "Jordan",
+   "region": "Ma'an Governorate",
+   "tagline": "A rose-red city half as old as time",
+   "lat": 30.3285,
+   "lng": 35.4444,
+   "chapters": [
+    "wonders",
+    "history",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "March – May & September – November (desert heat eases)",
+   "budgetPerDay": {
+    "backpacker": 45,
+    "midrange": 110,
+    "luxury": 300
+   },
+   "visa": "Jordan Pass bundles the visa fee with Petra entry — buy it before arrival.",
+   "language": "Arabic (English common in tourism)",
+   "currency": "JOD",
+   "currencyName": "Jordanian Dinar",
+   "safety": "Jordan is notably welcoming and stable; summer heat and long unshaded walks are the main challenge.",
+   "history": "Capital of the Nabataean kingdom from the 4th century BC, Petra grew rich taxing incense caravans and mastering desert hydraulics — carving temples, tombs and an 8,000-seat theatre directly into rose sandstone before Rome absorbed it in 106 AD.",
+   "facts": [
+    "The Treasury (Al-Khazneh) is a tomb façade 40 m tall, carved top-down.",
+    "Nabataeans piped spring water through 200 km of ceramic channels.",
+    "Only ~15% of the city has been excavated.",
+    "It starred as the Grail temple in Indiana Jones and the Last Crusade."
+   ],
+   "attractions": [
+    "The Siq's kilometre-long slot canyon entrance",
+    "The Treasury at first light",
+    "Monastery (Ad-Deir) — 850 steps up",
+    "High Place of Sacrifice",
+    "Petra by Night candlelit Siq"
+   ],
+   "food": [
+    "Mansaf (lamb in jameed yogurt) — Jordan's national dish",
+    "Maqluba",
+    "Bedouin zarb cooked underground",
+    "Cardamom coffee with locals"
+   ],
+   "transport": "3-hour drive or JETT bus from Amman; inside the site you walk (8–12 km/day) — start at dawn.",
+   "hiddenGems": [
+    "Al-Khubtha trail's Treasury-from-above viewpoint",
+    "Little Petra (Siq al-Barid)",
+    "Wadi Muthlim slot canyon route"
+   ],
+   "nearby": [
+    "Wadi Rum desert (90 min)",
+    "Dead Sea",
+    "Aqaba's Red Sea reefs"
+   ],
+   "tripDays": "2 days in Petra (5–7 for a Jordan loop)",
+   "tags": [
+    "history",
+    "unesco",
+    "hiking",
+    "photography",
+    "desert",
+    "bucket-list"
+   ],
+   "timezone": "Asia/Amman"
+  },
+  {
+   "id": "venice",
+   "name": "Venice",
+   "country": "Italy",
+   "region": "Veneto",
+   "tagline": "A city that floats on its own reflection",
+   "lat": 45.4408,
+   "lng": 12.3155,
+   "chapters": [
+    "history",
+    "festivals",
+    "luxury"
+   ],
+   "unesco": true,
+   "bestSeason": "April – June & September – October; February for Carnevale",
+   "budgetPerDay": {
+    "backpacker": 70,
+    "midrange": 160,
+    "luxury": 500
+   },
+   "visa": "Schengen rules; visa-free 90 days for many nationalities.",
+   "language": "Italian (Venetian dialect survives)",
+   "currency": "EUR",
+   "currencyName": "Euro",
+   "safety": "Very safe; mind pickpockets near San Marco and acqua alta flooding in late autumn.",
+   "history": "Refugees fleeing Attila built on lagoon mudflats atop millions of oak piles; by the Middle Ages the Venetian Republic — 'La Serenissima' — ruled Mediterranean trade for a thousand years, funding a skyline of Byzantine domes and Gothic palaces.",
+   "facts": [
+    "The city stands on ~10 million timber piles, petrified in brine.",
+    "There are 438 bridges connecting 118 islands and zero cars.",
+    "Gondolas are built asymmetric — one side longer — to row straight.",
+    "A day-visitor access fee now applies on peak dates; book ahead."
+   ],
+   "attractions": [
+    "St Mark's Basilica's gold mosaics",
+    "Doge's Palace & Bridge of Sighs",
+    "Grand Canal by vaporetto at dusk",
+    "Rialto market mornings",
+    "Teatro La Fenice"
+   ],
+   "food": [
+    "Cicchetti with an Aperol spritz",
+    "Sarde in saor",
+    "Risotto al nero di seppia",
+    "Baccalà mantecato"
+   ],
+   "transport": "Everything moves by foot or water — vaporetto passes beat single tickets; the airport connects by boat too.",
+   "hiddenGems": [
+    "Libreria Acqua Alta bookshop",
+    "Cannaregio's quiet canals",
+    "Burano & Torcello islands",
+    "San Giorgio Maggiore's bell-tower view (skip the San Marco queue)"
+   ],
+   "nearby": [
+    "Verona",
+    "Dolomites (2h)",
+    "Padua's Scrovegni Chapel"
+   ],
+   "tripDays": "2–3 days",
+   "tags": [
+    "romantic",
+    "history",
+    "festivals",
+    "food",
+    "photography",
+    "unesco",
+    "honeymoon",
+    "sunset"
+   ],
+   "timezone": "Europe/Rome"
+  },
+  {
+   "id": "kyoto",
+   "name": "Kyoto",
+   "country": "Japan",
+   "region": "Kansai",
+   "tagline": "Ten centuries of Japan in one city",
+   "lat": 35.0116,
+   "lng": 135.7681,
+   "chapters": [
+    "history",
+    "festivals",
+    "food"
+   ],
+   "unesco": true,
+   "bestSeason": "Late March – April (sakura) & November (autumn maples)",
+   "budgetPerDay": {
+    "backpacker": 55,
+    "midrange": 130,
+    "luxury": 450
+   },
+   "visa": "Visa-free 90 days for ~70 nationalities.",
+   "language": "Japanese",
+   "currency": "JPY",
+   "currencyName": "Japanese Yen",
+   "safety": "Exceptionally safe; the main etiquette rule — don't chase or block geiko in Gion.",
+   "history": "Imperial capital for over a thousand years (794–1868), Kyoto was spared WWII bombing and preserves 17 UNESCO monuments, some 1,600 Buddhist temples and 400 Shinto shrines — plus the tea ceremony, kaiseki cuisine and geiko culture born in its lanes.",
+   "facts": [
+    "Fushimi Inari's ~10,000 vermilion torii were each donated by businesses.",
+    "Kinkaku-ji's top two floors are covered in real gold leaf.",
+    "Nijō Castle's 'nightingale floors' chirp to reveal intruders.",
+    "Gion Matsuri has run nearly every July since 869 AD."
+   ],
+   "attractions": [
+    "Fushimi Inari at dawn",
+    "Arashiyama bamboo grove & Tenryū-ji",
+    "Kiyomizu-dera's wooden stage",
+    "Philosopher's Path in cherry season",
+    "Gion's machiya teahouse lanes"
+   ],
+   "food": [
+    "Kaiseki multi-course dinner",
+    "Yudōfu (temple tofu)",
+    "Matcha everything in Uji",
+    "Nishiki Market skewers",
+    "Obanzai home-style plates"
+   ],
+   "transport": "From Tokyo by Shinkansen in ~2h15. City buses and two subway lines; rent a bicycle — Kyoto is flat.",
+   "hiddenGems": [
+    "Ohara's rural temples",
+    "Kurama-to-Kibune forest hike",
+    "Fushimi sake district",
+    "Daitoku-ji's quiet zen sub-temples"
+   ],
+   "nearby": [
+    "Nara's deer & Great Buddha (45 min)",
+    "Osaka's street food (30 min)",
+    "Himeji Castle (1h)"
+   ],
+   "tripDays": "3–5 days",
+   "tags": [
+    "history",
+    "food",
+    "festivals",
+    "photography",
+    "anime",
+    "romantic",
+    "family",
+    "unesco",
+    "sunset"
+   ],
+   "timezone": "Asia/Tokyo"
+  },
+  {
+   "id": "maldives",
+   "name": "Maldives",
+   "country": "Maldives",
+   "region": "26 atolls, Indian Ocean",
+   "tagline": "One island, one resort, zero worries",
+   "lat": 3.2028,
+   "lng": 73.2207,
+   "chapters": [
+    "luxury",
+    "nature"
+   ],
+   "unesco": false,
+   "bestSeason": "November – April (dry, calm seas); May – October cheaper with surf",
+   "budgetPerDay": {
+    "backpacker": 70,
+    "midrange": 250,
+    "luxury": 1200
+   },
+   "visa": "Free 30-day visa on arrival for all nationalities.",
+   "language": "Dhivehi (English in resorts)",
+   "currency": "MVR",
+   "currencyName": "Maldivian Rufiyaa (USD accepted at resorts)",
+   "safety": "Very safe; respect local-island dress codes — bikinis only on designated beaches outside resorts.",
+   "history": "A 2,000-year-old seafaring sultanate strung across 26 coral atolls, the Maldives converted to Islam in 1153 and lived off cowrie shells — medieval Asia's currency — long before the first resort opened on Kurumba in 1972.",
+   "facts": [
+    "Average ground level is 1.5 m — the planet's lowest country.",
+    "Bioluminescent plankton light up beaches like fallen stars.",
+    "99% of the territory is ocean; only ~200 of 1,192 islands are inhabited.",
+    "Manta rays gather by the hundred at Hanifaru Bay each monsoon."
+   ],
+   "attractions": [
+    "Overwater villa sunrise",
+    "Hanifaru Bay manta snorkel (Baa Atoll)",
+    "Whale shark search off Maamigili",
+    "Sandbank picnics",
+    "Night dives with nurse sharks"
+   ],
+   "food": [
+    "Mas huni (tuna-coconut breakfast)",
+    "Garudhiya fish broth",
+    "Reef fish grilled on the beach",
+    "Hedhikaa tea-time snacks"
+   ],
+   "transport": "Seaplanes and speedboats from Malé; public ferries connect local islands for budget travel.",
+   "hiddenGems": [
+    "Local-island guesthouses (Thoddoo, Dhigurah) at a tenth of resort prices",
+    "Fuvahmulah's tiger shark diving",
+    "Utheemu's historic palace"
+   ],
+   "nearby": [
+    "Sri Lanka (90-min flight)",
+    "Southern India"
+   ],
+   "tripDays": "4–7 days",
+   "tags": [
+    "luxury",
+    "beach",
+    "romantic",
+    "honeymoon",
+    "diving",
+    "snorkeling",
+    "relaxation",
+    "sunset"
+   ],
+   "timezone": "Indian/Maldives"
+  },
+  {
+   "id": "mount-fuji",
+   "name": "Mount Fuji",
+   "country": "Japan",
+   "region": "Yamanashi / Shizuoka",
+   "tagline": "The sacred cone on every horizon",
+   "lat": 35.3606,
+   "lng": 138.7274,
+   "chapters": [
+    "nature",
+    "adventure",
+    "history"
+   ],
+   "unesco": true,
+   "bestSeason": "July – early September to climb; October – February for clearest views",
+   "budgetPerDay": {
+    "backpacker": 50,
+    "midrange": 120,
+    "luxury": 350
+   },
+   "visa": "Visa-free 90 days for ~70 nationalities.",
+   "language": "Japanese",
+   "currency": "JPY",
+   "currencyName": "Japanese Yen",
+   "safety": "Climbing is regulated — book the Yoshida trail slot, avoid 'bullet climbing' overnight without hut rest.",
+   "history": "Japan's highest peak (3,776 m) is a dormant stratovolcano last active in 1707, worshipped for centuries by Fuji-kō pilgrims and immortalized in Hokusai's Thirty-Six Views — UNESCO lists it as a sacred place and source of artistic inspiration.",
+   "facts": [
+    "The summit hosts a shrine, a post office and a 500-year-old crater rite.",
+    "On clear winter days Fuji is visible from Tokyo, 100 km away.",
+    "Aokigahara forest grows on a 1,200-year-old lava flow at its base.",
+    "Goraikō — sunrise from the summit — is the climb's whole point."
+   ],
+   "attractions": [
+    "Chureito Pagoda's postcard view",
+    "Lake Kawaguchiko shoreline",
+    "Yoshida trail summit climb",
+    "Oshino Hakkai spring ponds",
+    "Fuji-Q Highland coasters with a view"
+   ],
+   "food": [
+    "Hōtō noodle hotpot",
+    "Fujinomiya yakisoba",
+    "Kawaguchiko lake fish",
+    "Shingen mochi"
+   ],
+   "transport": "Fuji Excursion express from Shinjuku to Kawaguchiko (~2h); climbing buses to the 5th Station in season.",
+   "hiddenGems": [
+    "Lake Motosu (the ¥1000-note view)",
+    "Fujiyoshida's retro Honcho Street",
+    "Shiraito Falls' silk curtains"
+   ],
+   "nearby": [
+    "Hakone hot springs",
+    "Tokyo (100 km)",
+    "Izu Peninsula"
+   ],
+   "tripDays": "2–3 days",
+   "tags": [
+    "hiking",
+    "photography",
+    "anime",
+    "nature",
+    "spiritual",
+    "unesco",
+    "sunset"
+   ],
+   "timezone": "Asia/Tokyo"
+  },
+  {
+   "id": "northern-lights",
+   "name": "Northern Lights — Tromsø",
+   "country": "Norway",
+   "region": "Arctic Norway, 69°N",
+   "tagline": "The sky's own light show",
+   "lat": 69.6492,
+   "lng": 18.9553,
+   "chapters": [
+    "nature",
+    "hidden",
+    "adventure"
+   ],
+   "unesco": false,
+   "bestSeason": "September – late March (dark, statistically clearest around equinoxes)",
+   "budgetPerDay": {
+    "backpacker": 85,
+    "midrange": 190,
+    "luxury": 500
+   },
+   "visa": "Schengen rules; visa-free 90 days for many nationalities.",
+   "language": "Norwegian & Sámi (universal English)",
+   "currency": "NOK",
+   "currencyName": "Norwegian Krone",
+   "safety": "Extremely safe; dress for -15°C on chases and drive winter roads cautiously.",
+   "history": "Norse sagas called it Bifröst, the bridge of the gods; Sámi tradition holds the lights are ancestors' souls. Tromsø — the 'Paris of the North' and launchpad of polar explorers like Amundsen — sits dead-center under the auroral oval.",
+   "facts": [
+    "Aurora is solar wind hitting the magnetosphere: oxygen glows green and red, nitrogen blue-purple.",
+    "The auroral oval makes 69°N statistically better than farther-north sites.",
+    "Polar night lasts here from late November to mid-January — aurora at 2 pm.",
+    "Kp-index apps + a clear-sky map beat any fixed tour schedule."
+   ],
+   "attractions": [
+    "Aurora chase by minibus or boat",
+    "Fjellheisen cable car night view",
+    "Whale watching (Nov–Jan)",
+    "Sámi reindeer camp under the lights",
+    "Arctic Cathedral midnight concerts"
+   ],
+   "food": [
+    "Reindeer stew (bidos)",
+    "King crab",
+    "Arctic cod (skrei) in winter",
+    "Cinnamon buns at Risø"
+   ],
+   "transport": "Direct flights from Oslo (~2h). Rent a car for DIY chases or join guides who cross into Finland for clear skies.",
+   "hiddenGems": [
+    "Sommarøy's white beaches at 69°N",
+    "Kvaløya's fjord-side aurora spots without light pollution",
+    "Senja island's dragon-teeth peaks"
+   ],
+   "nearby": [
+    "Lofoten Islands",
+    "Lyngen Alps ski touring",
+    "Finnish Lapland"
+   ],
+   "tripDays": "3–5 nights (more nights = better odds)",
+   "tags": [
+    "aurora",
+    "winter",
+    "photography",
+    "arctic",
+    "wildlife",
+    "bucket-list",
+    "crowdsfree"
+   ],
+   "timezone": "Europe/Oslo"
+  },
+  {
+   "id": "norwegian-fjords",
+   "name": "Norwegian Fjords",
+   "country": "Norway",
+   "region": "Geirangerfjord / Nærøyfjord",
+   "tagline": "Sea-filled canyons a mile deep",
+   "lat": 62.1049,
+   "lng": 7.0951,
+   "chapters": [
+    "nature",
+    "luxury",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "May – September (waterfalls peak with June snowmelt)",
+   "budgetPerDay": {
+    "backpacker": 80,
+    "midrange": 190,
+    "luxury": 520
+   },
+   "visa": "Schengen rules; visa-free 90 days for many nationalities.",
+   "language": "Norwegian (universal English)",
+   "currency": "NOK",
+   "currencyName": "Norwegian Krone",
+   "safety": "Very safe; mountain roads like Trollstigen close in winter — check statensvegvesen status.",
+   "history": "Ice-age glaciers gouged these valleys below sea level over 2.5 million years; Vikings launched longships from their shores. UNESCO lists Geirangerfjord and Nærøyfjord as the archetype of fjord landscapes — cliffs 1,400 m high over water 500 m deep.",
+   "facts": [
+    "Sognefjord runs 204 km inland — the world's second-longest fjord.",
+    "The Seven Sisters waterfall faces 'the Suitor' across Geirangerfjord.",
+    "Electric ferries now glide the UNESCO fjords almost silently.",
+    "Flåm railway climbs 866 m in 20 km — one of the steepest on Earth."
+   ],
+   "attractions": [
+    "Geiranger's Eagle Road hairpins",
+    "Nærøyfjord ferry from Flåm",
+    "Trolltunga hike",
+    "Preikestolen (Pulpit Rock)",
+    "Ålesund's art-nouveau skyline"
+   ],
+   "food": [
+    "Fjord salmon & trout",
+    "Brunost (brown cheese) on waffles",
+    "Fiskesuppe",
+    "Strawberries from Valldal"
+   ],
+   "transport": "Bergen is the gateway; combine trains (Oslo–Bergen line), electric ferries and buses — or drive the National Scenic Routes.",
+   "hiddenGems": [
+    "Hjørundfjord, the locals' fjord",
+    "Loen Skylift to Hoven",
+    "Kayaking Nærøyfjord at dawn before the boats"
+   ],
+   "nearby": [
+    "Bergen's Bryggen wharf",
+    "Jotunheimen peaks",
+    "Atlantic Ocean Road"
+   ],
+   "tripDays": "5–7 days",
+   "tags": [
+    "nature",
+    "hiking",
+    "cruise",
+    "photography",
+    "roadtrip",
+    "unesco",
+    "kayaking"
+   ],
+   "timezone": "Europe/Oslo"
+  },
+  {
+   "id": "cappadocia",
+   "name": "Cappadocia",
+   "country": "Türkiye",
+   "region": "Göreme, Central Anatolia",
+   "tagline": "A hundred balloons over a stone dreamscape",
+   "lat": 38.6431,
+   "lng": 34.8289,
+   "chapters": [
+    "hidden",
+    "history",
+    "adventure",
+    "festivals"
+   ],
+   "unesco": true,
+   "bestSeason": "April – June & September – October (calm dawn winds for balloons)",
+   "budgetPerDay": {
+    "backpacker": 35,
+    "midrange": 90,
+    "luxury": 280
+   },
+   "visa": "e-Visa online in minutes for many nationalities; visa-free for others.",
+   "language": "Turkish",
+   "currency": "TRY",
+   "currencyName": "Turkish Lira",
+   "safety": "Tourist region is safe and welcoming; balloon flights cancel in wind — build in spare mornings.",
+   "history": "Volcanic ash from ancient eruptions compacted into tuff that wind sculpted into 'fairy chimneys' — and humans carved into everything else: Bronze-Age dwellings, Byzantine painted churches, and underground cities like Derinkuyu that sheltered 20,000 people eighteen storeys deep.",
+   "facts": [
+    "On calm mornings 100+ balloons launch at once — capped by aviation rules.",
+    "Derinkuyu's stone doors could seal each level from inside.",
+    "Göreme's rock churches hold frescoes from the 10th century.",
+    "Locals still use cave rooms as cool fruit cellars."
+   ],
+   "attractions": [
+    "Dawn balloon flight over Love Valley",
+    "Göreme Open-Air Museum",
+    "Derinkuyu underground city",
+    "Uçhisar rock castle",
+    "Red & Rose Valley sunset hike"
+   ],
+   "food": [
+    "Testi kebab cracked from its clay pot",
+    "Manti dumplings",
+    "Dried-fruit breakfasts in cave hotels",
+    "Local Emir & Kalecik Karası wines"
+   ],
+   "transport": "Fly to Nevşehir or Kayseri (1h15 from Istanbul), then shuttle. Scooters/ATVs for the valleys.",
+   "hiddenGems": [
+    "Ihlara Valley canyon monasteries",
+    "Soğanlı's quiet chimneys",
+    "Mustafapaşa's Greek mansions",
+    "Pottery town Avanos"
+   ],
+   "nearby": [
+    "Konya (whirling dervishes)",
+    "Mount Erciyes skiing",
+    "Istanbul (flight)"
+   ],
+   "tripDays": "2–4 days",
+   "tags": [
+    "balloons",
+    "photography",
+    "romantic",
+    "history",
+    "unesco",
+    "caves",
+    "budget-friendly",
+    "sunset"
+   ],
+   "timezone": "Europe/Istanbul"
+  },
+  {
+   "id": "grand-canyon",
+   "name": "Grand Canyon",
+   "country": "United States",
+   "region": "Arizona",
+   "tagline": "Two billion years, one mile deep",
+   "lat": 36.107,
+   "lng": -112.113,
+   "chapters": [
+    "nature",
+    "adventure"
+   ],
+   "unesco": true,
+   "bestSeason": "March – May & September – November (summer rims are fine; the inner canyon hits 45°C)",
+   "budgetPerDay": {
+    "backpacker": 55,
+    "midrange": 140,
+    "luxury": 380
+   },
+   "visa": "US ESTA visa waiver for eligible nationalities; B-2 visitor visa otherwise.",
+   "language": "English",
+   "currency": "USD",
+   "currencyName": "US Dollar",
+   "safety": "Down is optional, up is mandatory — never day-hike rim-to-river; carry 4L water per person.",
+   "history": "The Colorado River has sliced through the plateau for ~6 million years, exposing rock 1.8 billion years old — nearly half of Earth's history in one wall. Ancestral Puebloans lived in its alcoves; the Havasupai still call the canyon home.",
+   "facts": [
+    "It is 446 km long, up to 29 km wide and 1.8 km deep.",
+    "The canyon creates its own weather — the rim can be 15°C cooler than the floor.",
+    "Powell's 1869 wooden-boat descent charted it first.",
+    "It's one of the last great dark-sky places in the lower 48."
+   ],
+   "attractions": [
+    "Mather Point sunrise",
+    "South Kaibab to Ooh Aah Point",
+    "Desert View Watchtower",
+    "Colorado River rafting",
+    "Havasu Falls (permit lottery)"
+   ],
+   "food": [
+    "Southwest green-chile everything",
+    "Navajo tacos on frybread",
+    "El Tovar dining room with rim views",
+    "Route 66 diners in Williams"
+   ],
+   "transport": "Fly to Phoenix or Las Vegas, drive ~3.5–4.5h to the South Rim; free shuttles along the rim. North Rim closes in winter.",
+   "hiddenGems": [
+    "Shoshone Point's quiet overlook",
+    "Toroweap's 900-m sheer drop (4x4)",
+    "Cape Royal moonrise on the North Rim"
+   ],
+   "nearby": [
+    "Antelope Canyon & Horseshoe Bend (Page)",
+    "Sedona's red rocks",
+    "Monument Valley"
+   ],
+   "tripDays": "2–3 days (add 4 for rafting)",
+   "tags": [
+    "hiking",
+    "nature",
+    "photography",
+    "roadtrip",
+    "family",
+    "stargazing",
+    "unesco",
+    "sunset"
+   ],
+   "timezone": "America/Phoenix"
+  },
+  {
+   "id": "bora-bora",
+   "name": "Bora Bora",
+   "country": "French Polynesia",
+   "region": "Leeward Islands, South Pacific",
+   "tagline": "The lagoon that invented paradise",
+   "lat": -16.5004,
+   "lng": -151.7415,
+   "chapters": [
+    "luxury",
+    "hidden",
+    "nature"
+   ],
+   "unesco": false,
+   "bestSeason": "May – October (dry trade-wind season)",
+   "budgetPerDay": {
+    "backpacker": 120,
+    "midrange": 350,
+    "luxury": 1500
+   },
+   "visa": "France's overseas rules — visa-free 90 days for EU, US, UK and more.",
+   "language": "French & Tahitian",
+   "currency": "XPF",
+   "currencyName": "CFP Franc",
+   "safety": "Idyllically safe; reef cuts and sunburn are the leading injuries.",
+   "history": "Settled by Polynesian navigators ~900 AD who crossed thousands of open-ocean miles by star paths, Bora Bora ('Pora Pora' — firstborn) later hosted a WWII US supply base whose airstrip became French Polynesia's first international runway.",
+   "facts": [
+    "Mount Otemanu is the eroded core of a 7-million-year-old volcano.",
+    "The lagoon is three times larger than the island itself.",
+    "Overwater bungalows were invented in French Polynesia in 1967.",
+    "Blacktip reef sharks and rays patrol the lagoon like house pets."
+   ],
+   "attractions": [
+    "Lagoon tour with ray & shark snorkel",
+    "Mount Otemanu viewpoints",
+    "Matira Beach sunset",
+    "Coral gardens off Motu Piti Aau",
+    "Vaitape village market"
+   ],
+   "food": [
+    "Poisson cru au lait de coco",
+    "Grilled mahi-mahi with vanilla sauce",
+    "Po'e banana pudding",
+    "Bloody Mary's legendary seafood bar"
+   ],
+   "transport": "Fly Tahiti→Bora Bora (50 min); resorts collect you by boat from the airport motu. Bicycles circle the main island in 3 hours.",
+   "hiddenGems": [
+    "Anau's quiet manta cleaning station",
+    "WWII coastal guns hike",
+    "Matira's public beach picnics beside $2,000 resorts"
+   ],
+   "nearby": [
+    "Moorea",
+    "Taha'a vanilla island",
+    "Rangiroa's dive atoll"
+   ],
+   "tripDays": "4–5 days",
+   "tags": [
+    "luxury",
+    "honeymoon",
+    "beach",
+    "romantic",
+    "diving",
+    "snorkeling",
+    "relaxation",
+    "sunset"
+   ],
+   "timezone": "Pacific/Tahiti"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "wonders",
+   "index": 0,
+   "title": "Seven Wonders",
+   "subtitle": "Monuments that outlived their empires",
+   "accent": "#f5c451",
+   "spaceTint": "#100c1c",
+   "cameraDistance": 2.6
+  },
+  {
+   "id": "nature",
+   "index": 1,
+   "title": "Nature",
+   "subtitle": "Where the planet shows off",
+   "accent": "#5be3a2",
+   "spaceTint": "#081410",
+   "cameraDistance": 2.8
+  },
+  {
+   "id": "luxury",
+   "index": 2,
+   "title": "Luxury",
+   "subtitle": "Overwater villas and slow mornings",
+   "accent": "#7fd4ff",
+   "spaceTint": "#0a1020",
+   "cameraDistance": 2.5
+  },
+  {
+   "id": "adventure",
+   "index": 3,
+   "title": "Adventure",
+   "subtitle": "Trails, canyons and thin air",
+   "accent": "#ff8a5c",
+   "spaceTint": "#160d08",
+   "cameraDistance": 2.9
+  },
+  {
+   "id": "hidden",
+   "index": 4,
+   "title": "Hidden Gems",
+   "subtitle": "Places the crowds haven't found",
+   "accent": "#cd8bff",
+   "spaceTint": "#120a1a",
+   "cameraDistance": 2.7
+  },
+  {
+   "id": "history",
+   "index": 5,
+   "title": "Historical Places",
+   "subtitle": "Walk through other centuries",
+   "accent": "#e8b06b",
+   "spaceTint": "#14100a",
+   "cameraDistance": 2.6
+  },
+  {
+   "id": "festivals",
+   "index": 6,
+   "title": "Festivals",
+   "subtitle": "The world at full volume",
+   "accent": "#ff6bcb",
+   "spaceTint": "#170a14",
+   "cameraDistance": 2.7
+  },
+  {
+   "id": "food",
+   "index": 7,
+   "title": "Food",
+   "subtitle": "Eat your way around the globe",
+   "accent": "#ffd166",
+   "spaceTint": "#141005",
+   "cameraDistance": 2.5
+  }
+ ],
+ "stays": {
+  "taj-mahal": [
+   {
+    "name": "Zostel Agra",
+    "tier": "budget",
+    "pricePerNight": 15
+   },
+   {
+    "name": "Crystal Sarovar Premiere",
+    "tier": "mid",
+    "pricePerNight": 90
+   },
+   {
+    "name": "The Oberoi Amarvilas",
+    "tier": "luxury",
+    "pricePerNight": 650,
+    "note": "every room faces the Taj"
+   }
+  ],
+  "great-wall": [
+   {
+    "name": "Beijing Downtown Backpackers",
+    "tier": "budget",
+    "pricePerNight": 20
+   },
+   {
+    "name": "Brickyard Retreat at Mutianyu",
+    "tier": "mid",
+    "pricePerNight": 140,
+    "note": "wall views from the terrace"
+   },
+   {
+    "name": "Commune by the Great Wall",
+    "tier": "luxury",
+    "pricePerNight": 300
+   }
+  ],
+  "machu-picchu": [
+   {
+    "name": "Supertramp Hostel, Aguas Calientes",
+    "tier": "budget",
+    "pricePerNight": 25
+   },
+   {
+    "name": "Tierra Viva Machu Picchu",
+    "tier": "mid",
+    "pricePerNight": 120
+   },
+   {
+    "name": "Sanctuary Lodge, A Belmond Hotel",
+    "tier": "luxury",
+    "pricePerNight": 1200,
+    "note": "beside the citadel gate"
+   }
+  ],
+  "swiss-alps": [
+   {
+    "name": "Zermatt Youth Hostel",
+    "tier": "budget",
+    "pricePerNight": 60
+   },
+   {
+    "name": "Hotel Bella Vista, Zermatt",
+    "tier": "mid",
+    "pricePerNight": 220
+   },
+   {
+    "name": "The Omnia, Zermatt",
+    "tier": "luxury",
+    "pricePerNight": 800
+   }
+  ],
+  "bali": [
+   {
+    "name": "Puri Garden Hostel, Ubud",
+    "tier": "budget",
+    "pricePerNight": 18
+   },
+   {
+    "name": "Alaya Resort Ubud",
+    "tier": "mid",
+    "pricePerNight": 140
+   },
+   {
+    "name": "Four Seasons Resort Bali at Sayan",
+    "tier": "luxury",
+    "pricePerNight": 950
+   }
+  ],
+  "banff": [
+   {
+    "name": "HI Banff Alpine Centre",
+    "tier": "budget",
+    "pricePerNight": 45
+   },
+   {
+    "name": "Moose Hotel & Suites",
+    "tier": "mid",
+    "pricePerNight": 250
+   },
+   {
+    "name": "Fairmont Banff Springs",
+    "tier": "luxury",
+    "pricePerNight": 550,
+    "note": "the 'Castle in the Rockies'"
+   }
+  ],
+  "yellowstone": [
+   {
+    "name": "Madison Campground",
+    "tier": "budget",
+    "pricePerNight": 30
+   },
+   {
+    "name": "Old Faithful Inn",
+    "tier": "mid",
+    "pricePerNight": 280,
+    "note": "book ~13 months ahead"
+   },
+   {
+    "name": "Lake Yellowstone Hotel",
+    "tier": "luxury",
+    "pricePerNight": 450
+   }
+  ],
+  "iceland": [
+   {
+    "name": "Kex Hostel, Reykjavík",
+    "tier": "budget",
+    "pricePerNight": 50
+   },
+   {
+    "name": "Fosshotel Glacier Lagoon",
+    "tier": "mid",
+    "pricePerNight": 260
+   },
+   {
+    "name": "The Retreat at Blue Lagoon",
+    "tier": "luxury",
+    "pricePerNight": 1400
+   }
+  ],
+  "santorini": [
+   {
+    "name": "Caveland Hostel",
+    "tier": "budget",
+    "pricePerNight": 45,
+    "note": "a converted winery"
+   },
+   {
+    "name": "Keti Hotel, Fira",
+    "tier": "mid",
+    "pricePerNight": 180,
+    "note": "caldera-view cave rooms"
+   },
+   {
+    "name": "Katikies, Oia",
+    "tier": "luxury",
+    "pricePerNight": 900
+   }
+  ],
+  "petra": [
+   {
+    "name": "Rocky Mountain Hotel",
+    "tier": "budget",
+    "pricePerNight": 35
+   },
+   {
+    "name": "Petra Moon Hotel",
+    "tier": "mid",
+    "pricePerNight": 110
+   },
+   {
+    "name": "Mövenpick Resort Petra",
+    "tier": "luxury",
+    "pricePerNight": 220,
+    "note": "30 steps from the gate"
+   }
+  ],
+  "venice": [
+   {
+    "name": "Generator Venice",
+    "tier": "budget",
+    "pricePerNight": 40
+   },
+   {
+    "name": "Hotel Antiche Figure",
+    "tier": "mid",
+    "pricePerNight": 250,
+    "note": "on the Grand Canal"
+   },
+   {
+    "name": "Aman Venice",
+    "tier": "luxury",
+    "pricePerNight": 1600
+   }
+  ],
+  "kyoto": [
+   {
+    "name": "Piece Hostel Sanjo",
+    "tier": "budget",
+    "pricePerNight": 35
+   },
+   {
+    "name": "Hotel Kanra Kyoto",
+    "tier": "mid",
+    "pricePerNight": 250
+   },
+   {
+    "name": "The Ritz-Carlton Kyoto",
+    "tier": "luxury",
+    "pricePerNight": 1100,
+    "note": "on the Kamogawa river"
+   }
+  ],
+  "maldives": [
+   {
+    "name": "Thoddoo island guesthouses",
+    "tier": "budget",
+    "pricePerNight": 60,
+    "note": "local island, public ferry"
+   },
+   {
+    "name": "Kandima Maldives",
+    "tier": "mid",
+    "pricePerNight": 450
+   },
+   {
+    "name": "Soneva Fushi",
+    "tier": "luxury",
+    "pricePerNight": 2500
+   }
+  ],
+  "mount-fuji": [
+   {
+    "name": "K's House Fuji View",
+    "tier": "budget",
+    "pricePerNight": 30
+   },
+   {
+    "name": "Kozantei Ubuya, Kawaguchiko",
+    "tier": "mid",
+    "pricePerNight": 300,
+    "note": "lake-and-Fuji view ryokan"
+   },
+   {
+    "name": "Hoshinoya Fuji",
+    "tier": "luxury",
+    "pricePerNight": 700,
+    "note": "glamping cabins facing the peak"
+   }
+  ],
+  "northern-lights": [
+   {
+    "name": "Tromsø Activities Hostel",
+    "tier": "budget",
+    "pricePerNight": 55
+   },
+   {
+    "name": "Smarthotel Tromsø",
+    "tier": "mid",
+    "pricePerNight": 130
+   },
+   {
+    "name": "Malangen Resort",
+    "tier": "luxury",
+    "pricePerNight": 350,
+    "note": "aurora camp outside the city lights"
+   }
+  ],
+  "norwegian-fjords": [
+   {
+    "name": "Flåm Camping & Hostel",
+    "tier": "budget",
+    "pricePerNight": 60
+   },
+   {
+    "name": "Hotel Union Geiranger",
+    "tier": "mid",
+    "pricePerNight": 280
+   },
+   {
+    "name": "Juvet Landscape Hotel",
+    "tier": "luxury",
+    "pricePerNight": 450,
+    "note": "the Ex Machina hotel"
+   }
+  ],
+  "cappadocia": [
+   {
+    "name": "Nomad Cave Hostel, Göreme",
+    "tier": "budget",
+    "pricePerNight": 20
+   },
+   {
+    "name": "Sultan Cave Suites",
+    "tier": "mid",
+    "pricePerNight": 180,
+    "note": "the famous balloon-view rooftop"
+   },
+   {
+    "name": "Museum Hotel",
+    "tier": "luxury",
+    "pricePerNight": 600,
+    "note": "Relais & Châteaux cave palace"
+   }
+  ],
+  "grand-canyon": [
+   {
+    "name": "Mather Campground",
+    "tier": "budget",
+    "pricePerNight": 30
+   },
+   {
+    "name": "Yavapai Lodge",
+    "tier": "mid",
+    "pricePerNight": 220
+   },
+   {
+    "name": "El Tovar Hotel",
+    "tier": "luxury",
+    "pricePerNight": 350,
+    "note": "1905 lodge on the rim"
+   }
+  ],
+  "bora-bora": [
+   {
+    "name": "Village Temanuata",
+    "tier": "budget",
+    "pricePerNight": 180,
+    "note": "beach bungalows, local-run"
+   },
+   {
+    "name": "Maitai Polynesia",
+    "tier": "mid",
+    "pricePerNight": 350
+   },
+   {
+    "name": "Four Seasons Resort Bora Bora",
+    "tier": "luxury",
+    "pricePerNight": 2200,
+    "note": "overwater villas"
+   }
+  ]
+ },
+ "entryFees": {
+  "taj-mahal": "₹1,300 (~$15) for foreign visitors incl. mausoleum; closed Fridays",
+  "great-wall": "Mutianyu ¥45 (~$6) entry + ~$17 cable car / toboggan",
+  "machu-picchu": "~$45 (S/152) foreigner entry, timed circuits; Huayna Picchu extra ~$20 — book weeks ahead",
+  "swiss-alps": "Trails free; Jungfraujoch railway ~$230 return (Swiss Travel Pass discounts)",
+  "bali": "Temples ~$3–7 each (Uluwatu ~$5, Tirta Empul ~$5); Besakih ~$10",
+  "banff": "Parks Canada pass ~CA$11 (~$8) per person/day",
+  "yellowstone": "$35 per vehicle, valid 7 days",
+  "iceland": "Natural sites free; Blue Lagoon from ~$70, Jökulsárlón boat ~$45",
+  "santorini": "Akrotiri excavations ~€12; Ancient Thera ~€6",
+  "petra": "1-day JD50 (~$70); the ~$100 Jordan Pass bundles it with the country visa",
+  "venice": "Day-tripper access fee €5–10 on peak dates; St Mark's from €3, Doge's Palace ~€30",
+  "kyoto": "Temples ~¥400–800 ($3–6) each; Fushimi Inari is free",
+  "maldives": "No entry fees — budget for seaplane/speedboat transfers ($100–450 return)",
+  "mount-fuji": "Yoshida trail climbing fee ¥4,000 (~$27), booked online in season",
+  "northern-lights": "The sky is free; guided aurora chases run ~$120–180 per night",
+  "norwegian-fjords": "Fjords free; Geiranger/Nærøyfjord ferry cruises ~$40–60",
+  "cappadocia": "Göreme Open-Air Museum ~$14; balloon flights $200–300 at dawn",
+  "grand-canyon": "$35 per vehicle, valid 7 days",
+  "bora-bora": "No entry fees; lagoon day tours ~$120–150"
+ },
+ "gatewayAirports": {
+  "taj-mahal": {
+   "code": "DEL",
+   "city": "Delhi"
+  },
+  "great-wall": {
+   "code": "PEK",
+   "city": "Beijing"
+  },
+  "machu-picchu": {
+   "code": "CUZ",
+   "city": "Cusco"
+  },
+  "swiss-alps": {
+   "code": "ZRH",
+   "city": "Zurich"
+  },
+  "bali": {
+   "code": "DPS",
+   "city": "Denpasar"
+  },
+  "banff": {
+   "code": "YYC",
+   "city": "Calgary"
+  },
+  "yellowstone": {
+   "code": "BZN",
+   "city": "Bozeman"
+  },
+  "iceland": {
+   "code": "KEF",
+   "city": "Reykjavík"
+  },
+  "santorini": {
+   "code": "JTR",
+   "city": "Santorini"
+  },
+  "petra": {
+   "code": "AMM",
+   "city": "Amman"
+  },
+  "venice": {
+   "code": "VCE",
+   "city": "Venice"
+  },
+  "kyoto": {
+   "code": "KIX",
+   "city": "Osaka"
+  },
+  "maldives": {
+   "code": "MLE",
+   "city": "Malé"
+  },
+  "mount-fuji": {
+   "code": "HND",
+   "city": "Tokyo"
+  },
+  "northern-lights": {
+   "code": "TOS",
+   "city": "Tromsø"
+  },
+  "norwegian-fjords": {
+   "code": "BGO",
+   "city": "Bergen"
+  },
+  "cappadocia": {
+   "code": "NAV",
+   "city": "Nevşehir"
+  },
+  "grand-canyon": {
+   "code": "LAS",
+   "city": "Las Vegas"
+  },
+  "bora-bora": {
+   "code": "BOB",
+   "city": "Bora Bora (via Papeete)"
+  }
+ },
+ "originHubs": [
+  {
+   "id": "nyc",
+   "city": "New York",
+   "code": "JFK",
+   "lat": 40.64,
+   "lng": -73.78,
+   "aliases": [
+    "new york",
+    "nyc",
+    "jfk",
+    "newark"
+   ]
+  },
+  {
+   "id": "lax",
+   "city": "Los Angeles",
+   "code": "LAX",
+   "lat": 33.94,
+   "lng": -118.41,
+   "aliases": [
+    "los angeles",
+    "la ",
+    "lax"
+   ]
+  },
+  {
+   "id": "sfo",
+   "city": "San Francisco",
+   "code": "SFO",
+   "lat": 37.62,
+   "lng": -122.38,
+   "aliases": [
+    "san francisco",
+    "sf ",
+    "sfo",
+    "bay area"
+   ]
+  },
+  {
+   "id": "chi",
+   "city": "Chicago",
+   "code": "ORD",
+   "lat": 41.97,
+   "lng": -87.9,
+   "aliases": [
+    "chicago",
+    "ord"
+   ]
+  },
+  {
+   "id": "dfw",
+   "city": "Dallas",
+   "code": "DFW",
+   "lat": 32.9,
+   "lng": -97.04,
+   "aliases": [
+    "dallas",
+    "dfw"
+   ]
+  },
+  {
+   "id": "sea",
+   "city": "Seattle",
+   "code": "SEA",
+   "lat": 47.45,
+   "lng": -122.31,
+   "aliases": [
+    "seattle"
+   ]
+  },
+  {
+   "id": "mia",
+   "city": "Miami",
+   "code": "MIA",
+   "lat": 25.79,
+   "lng": -80.29,
+   "aliases": [
+    "miami"
+   ]
+  },
+  {
+   "id": "yyz",
+   "city": "Toronto",
+   "code": "YYZ",
+   "lat": 43.68,
+   "lng": -79.63,
+   "aliases": [
+    "toronto"
+   ]
+  },
+  {
+   "id": "lon",
+   "city": "London",
+   "code": "LHR",
+   "lat": 51.47,
+   "lng": -0.45,
+   "aliases": [
+    "london",
+    "heathrow"
+   ]
+  },
+  {
+   "id": "par",
+   "city": "Paris",
+   "code": "CDG",
+   "lat": 49.01,
+   "lng": 2.55,
+   "aliases": [
+    "paris"
+   ]
+  },
+  {
+   "id": "fra",
+   "city": "Frankfurt",
+   "code": "FRA",
+   "lat": 50.04,
+   "lng": 8.56,
+   "aliases": [
+    "frankfurt"
+   ]
+  },
+  {
+   "id": "ams",
+   "city": "Amsterdam",
+   "code": "AMS",
+   "lat": 52.31,
+   "lng": 4.76,
+   "aliases": [
+    "amsterdam"
+   ]
+  },
+  {
+   "id": "dxb",
+   "city": "Dubai",
+   "code": "DXB",
+   "lat": 25.25,
+   "lng": 55.36,
+   "aliases": [
+    "dubai"
+   ]
+  },
+  {
+   "id": "del",
+   "city": "Delhi",
+   "code": "DEL",
+   "lat": 28.57,
+   "lng": 77.1,
+   "aliases": [
+    "delhi",
+    "new delhi"
+   ]
+  },
+  {
+   "id": "bom",
+   "city": "Mumbai",
+   "code": "BOM",
+   "lat": 19.09,
+   "lng": 72.87,
+   "aliases": [
+    "mumbai",
+    "bombay"
+   ]
+  },
+  {
+   "id": "hyd",
+   "city": "Hyderabad",
+   "code": "HYD",
+   "lat": 17.24,
+   "lng": 78.43,
+   "aliases": [
+    "hyderabad"
+   ]
+  },
+  {
+   "id": "blr",
+   "city": "Bengaluru",
+   "code": "BLR",
+   "lat": 13.2,
+   "lng": 77.71,
+   "aliases": [
+    "bangalore",
+    "bengaluru"
+   ]
+  },
+  {
+   "id": "sin",
+   "city": "Singapore",
+   "code": "SIN",
+   "lat": 1.36,
+   "lng": 103.99,
+   "aliases": [
+    "singapore"
+   ]
+  },
+  {
+   "id": "tyo",
+   "city": "Tokyo",
+   "code": "HND",
+   "lat": 35.55,
+   "lng": 139.78,
+   "aliases": [
+    "tokyo"
+   ]
+  },
+  {
+   "id": "syd",
+   "city": "Sydney",
+   "code": "SYD",
+   "lat": -33.95,
+   "lng": 151.18,
+   "aliases": [
+    "sydney"
+   ]
+  }
+ ],
+ "regionalAirlines": {
+  "taj-mahal": [
+   "Air India",
+   "Emirates",
+   "United"
+  ],
+  "great-wall": [
+   "Air China",
+   "Cathay Pacific",
+   "United"
+  ],
+  "machu-picchu": [
+   "LATAM",
+   "Avianca",
+   "Copa"
+  ],
+  "swiss-alps": [
+   "SWISS",
+   "Lufthansa",
+   "United"
+  ],
+  "bali": [
+   "Singapore Airlines",
+   "Garuda Indonesia",
+   "Qatar Airways"
+  ],
+  "banff": [
+   "Air Canada",
+   "WestJet",
+   "United"
+  ],
+  "yellowstone": [
+   "Delta",
+   "United",
+   "Alaska"
+  ],
+  "iceland": [
+   "Icelandair",
+   "PLAY",
+   "Delta"
+  ],
+  "santorini": [
+   "Aegean",
+   "Lufthansa",
+   "Emirates via ATH"
+  ],
+  "petra": [
+   "Royal Jordanian",
+   "Turkish Airlines",
+   "Emirates"
+  ],
+  "venice": [
+   "ITA Airways",
+   "Lufthansa",
+   "Delta"
+  ],
+  "kyoto": [
+   "ANA",
+   "Japan Airlines",
+   "United"
+  ],
+  "maldives": [
+   "Qatar Airways",
+   "Emirates",
+   "IndiGo"
+  ],
+  "mount-fuji": [
+   "ANA",
+   "Japan Airlines",
+   "ZIPAIR"
+  ],
+  "northern-lights": [
+   "Norwegian",
+   "SAS",
+   "KLM via AMS"
+  ],
+  "norwegian-fjords": [
+   "Norwegian",
+   "SAS",
+   "KLM via AMS"
+  ],
+  "cappadocia": [
+   "Turkish Airlines",
+   "Pegasus",
+   "AJet"
+  ],
+  "grand-canyon": [
+   "Southwest",
+   "Delta",
+   "United"
+  ],
+  "bora-bora": [
+   "Air Tahiti Nui",
+   "French Bee",
+   "Air France"
+  ]
+ }
+}
