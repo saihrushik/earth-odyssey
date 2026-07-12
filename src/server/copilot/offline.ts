@@ -223,7 +223,8 @@ export async function* runOfflineCopilot(
         : `One place stands out: **${top.name}**.`,
   );
 
-  for (const id of picks.slice(0, 3)) {
+  // Write up every pick we counted — the opener's number must match the list.
+  for (const id of picks) {
     const d = destinationById(id)!;
     parts.push(`**${d.name}**, ${d.country} — ${reasonFor(d, intents)}. Best time: ${d.bestSeason}. Plan ${d.tripDays}.`);
   }
