@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { profile } from "@/lib/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
-  description: profile.blurb,
+  title: "Earth Odyssey — AI-powered 3D travel discovery",
+  description:
+    "Orbit a living digital Earth, discover destinations as glowing hotspots, and let a RAG-powered AI travel copilot fly you to your next journey.",
   openGraph: {
-    title: `${profile.name} — ${profile.role}`,
-    description: profile.blurb,
+    title: "Earth Odyssey — AI-powered 3D travel discovery",
+    description:
+      "Orbit a living digital Earth, discover destinations as glowing hotspots, and let a RAG-powered AI travel copilot fly you to your next journey.",
     type: "website",
   },
 };
@@ -33,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
