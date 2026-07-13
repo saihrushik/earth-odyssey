@@ -40,8 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Claude Code local files
-/.claude/
 
 # python backend
 backend/.venv/
