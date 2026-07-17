@@ -1,7 +1,7 @@
 # Earth Odyssey — Python RAG Backend
 
-A fully self-contained RAG chatbot backend: **no API keys, no external AI services**.
-When a question comes in, it goes straight to the local vector database and a local LLM.
+RAG chatbot backend: retrieval and embeddings run locally; generation is **Claude**
+(Anthropic API). Without a key it degrades to a deterministic composer.
 
 ```
 question + history
@@ -10,8 +10,8 @@ question + history
   → vector search                   app/rag/store.py        (ChromaDB, persistent, on disk)
   → top-5 chunks re-ranked          app/rag/retriever.py
   → live facts prefetch             app/tools.py            (Open-Meteo weather, flight estimator, stays)
-  → generation                      app/llm.py              (Ollama · llama3.2:3b, local)
-       └─ deterministic composer fallback when Ollama isn't running
+  → generation                      app/llm.py              (Claude · claude-opus-4-8)
+       └─ deterministic composer fallback when no ANTHROPIC_API_KEY is set
   → NDJSON stream: globe actions, text deltas, citations
 ```
 
@@ -26,9 +26,9 @@ python3 -m venv .venv
 .venv/bin/python -m app.rag.ingest
 .venv/bin/python -m app.rag.ingest --wikipedia "Machu Picchu,Petra"
 
-# 2. Local LLM (optional but recommended — real generation, still no keys)
-brew install ollama && ollama serve &
-ollama pull llama3.2:3b
+# 2. Claude key (backend/.env is gitignored — never commit it)
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env
+# optional: CLAUDE_MODEL=claude-haiku-4-5 for cheaper chat
 
 # 3. Serve
 .venv/bin/uvicorn app.main:app --port 8000
@@ -50,5 +50,5 @@ built-in TypeScript engine if this server is down.
 - **The dataset** is exported from the TypeScript source of truth:
   `npx tsx scripts/export-data.ts` regenerates `data/travel-data.json`.
 - **Hosting**: this stack runs anywhere Python runs (a $5 VPS, Railway, your Mac). It cannot
-  run on Vercel serverless (Ollama needs a persistent process), which is why the deployed
+  run on Vercel serverless as-is (ChromaDB needs persistent disk), which is why the deployed
   site keeps the TS engine unless COPILOT_BACKEND_URL points at a hosted instance.

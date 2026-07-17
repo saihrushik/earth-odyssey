@@ -53,10 +53,8 @@ class CopilotRequest(BaseModel):
 async def health() -> dict[str, Any]:
     if llm.claude_available():
         active = f"claude ({llm.claude_model()})"
-    elif await llm.is_available():
-        active = f"ollama ({llm.OLLAMA_MODEL})"
     else:
-        active = "composer-fallback (set ANTHROPIC_API_KEY or start Ollama for LLM answers)"
+        active = "composer-fallback (set ANTHROPIC_API_KEY in backend/.env for Claude answers)"
     return {
         "ok": True,
         "vectorDb": "chromadb",
