@@ -11,7 +11,15 @@ The Next.js frontend proxies /api/copilot here when COPILOT_BACKEND_URL is set.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import Any
+
+from dotenv import load_dotenv
+
+# Secrets: backend/.env first, then the repo root .env.local (never committed).
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(_BACKEND_DIR / ".env")
+load_dotenv(_BACKEND_DIR.parent / ".env.local")
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,11 +51,17 @@ class CopilotRequest(BaseModel):
 
 @app.get("/api/health")
 async def health() -> dict[str, Any]:
+    if llm.claude_available():
+        active = f"claude ({llm.claude_model()})"
+    elif await llm.is_available():
+        active = f"ollama ({llm.OLLAMA_MODEL})"
+    else:
+        active = "composer-fallback (set ANTHROPIC_API_KEY or start Ollama for LLM answers)"
     return {
         "ok": True,
         "vectorDb": "chromadb",
         "chunks": store.count(),
-        "llm": llm.OLLAMA_MODEL if await llm.is_available() else "composer-fallback (start Ollama for LLM answers)",
+        "llm": active,
     }
 
 

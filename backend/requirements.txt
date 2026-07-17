@@ -3,3 +3,5 @@ uvicorn[standard]>=0.30
 httpx>=0.27
 fastembed>=0.5
 chromadb>=0.6
+anthropic>=0.117
+python-dotenv>=1.0

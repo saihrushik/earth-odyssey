@@ -1,7 +1,11 @@
-"""Local LLM generation via Ollama — no API keys, runs entirely on this machine.
+"""LLM generation engines.
 
-Requires the Ollama app/daemon (https://ollama.com) with a small model pulled:
-    ollama pull llama3.2:3b
+Two options, best available wins:
+  1. Claude (Anthropic API) — set ANTHROPIC_API_KEY in backend/.env.
+     Far stronger world knowledge and instruction-following than the local
+     model; still grounded by the same retrieved context + live facts.
+  2. Ollama (local, no API keys) — https://ollama.com with a model pulled:
+     ollama pull llama3.2:3b
 """
 
 from __future__ import annotations
@@ -11,9 +15,37 @@ import os
 from collections.abc import AsyncGenerator
 
 import httpx
+from anthropic import AsyncAnthropic
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
+
+
+# ── Claude (Anthropic API) ───────────────────────────────────────────────────
+
+def claude_model() -> str:
+    return os.environ.get("CLAUDE_MODEL", "claude-opus-4-8")
+
+
+def claude_available() -> bool:
+    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+
+
+async def stream_claude(system: str, messages: list[dict[str, str]]) -> AsyncGenerator[str, None]:
+    """Stream a Claude response grounded by the system prompt's context."""
+    client = AsyncAnthropic()  # reads ANTHROPIC_API_KEY from env
+    async with client.messages.stream(
+        model=claude_model(),
+        max_tokens=2048,
+        # Adaptive thinking + low effort: snappy chat answers, deeper
+        # reasoning only when the question actually needs it.
+        thinking={"type": "adaptive"},
+        output_config={"effort": "low"},
+        system=system,
+        messages=messages,
+    ) as stream:
+        async for text in stream.text_stream:
+            yield text
 
 
 async def is_available() -> bool:

@@ -112,12 +112,22 @@ def _compose(dest: dict[str, Any], picks: list[dict[str, Any]], facts: list[str]
     return "\n\n".join(parts)
 
 
-def _llm_system_prompt(picks: list[dict[str, Any]], chunks: list, facts: list[str]) -> str:
+def _llm_system_prompt(picks: list[dict[str, Any]], chunks: list, facts: list[str], world_knowledge: bool) -> str:
     context = "\n\n".join(f"[{i + 1}] {c.title}\n{c.text[:900]}" for i, c in enumerate(chunks))
     pick_names = ", ".join(f"**{p['name']}** ({p['country']})" for p in picks)
+    if world_knowledge:
+        # Claude: strong factual recall — generative answers allowed, grounded first.
+        rules = """GROUNDING RULES:
+- Prefer the retrieved context and live facts below — they are authoritative for the 19 catalog destinations, prices, weather and stays.
+- For places or questions the context doesn't cover (e.g. regional spots near a city), answer from your own knowledge of REAL places. Never fabricate a place, road, price or hotel — if you're not certain something exists, say so.
+- Quote live prices/weather only from the facts below; for anything else money-related, give rough ranges and say they're approximate.
+- If the request is about a region outside the catalog, still answer helpfully, and mention which catalog destination the globe flew to as the nearest themed match."""
+    else:
+        # Small local model: hallucinates without a hard leash.
+        rules = "STRICT RULES: Use ONLY the retrieved context and live facts below. Never invent prices, dates, hotels or weather. If something isn't in the facts, say you don't have it."
     return f"""You are the Earth Odyssey Travel Copilot — a warm, precise travel expert beside a 3D globe. Answer in under 150 words. Bold destination names with **double asterisks**.
 
-STRICT RULES: Use ONLY the retrieved context and live facts below. Never invent prices, dates, hotels or weather. If something isn't in the facts, say you don't have it.
+{rules}
 
 Recommended destinations for this request (the globe is already highlighting them): {pick_names}
 
@@ -134,8 +144,14 @@ async def run_copilot(messages: list[dict[str, str]], context: dict[str, Any] | 
     intents = supervisor.analyze_intents(query)
     experts = supervisor.select_experts(intents)
 
-    use_llm = await llm.is_available()
-    engine = f"python-rag/{llm.OLLAMA_MODEL}" if use_llm else "python-rag/composer"
+    use_claude = llm.claude_available()
+    use_ollama = (not use_claude) and await llm.is_available()
+    if use_claude:
+        engine = f"python-rag/{llm.claude_model()}"
+    elif use_ollama:
+        engine = f"python-rag/{llm.OLLAMA_MODEL}"
+    else:
+        engine = "python-rag/composer"
     yield {"type": "meta", "engine": engine, "experts": experts}
 
     # ---- Retrieval (history-aware) ------------------------------------------
@@ -170,13 +186,14 @@ async def run_copilot(messages: list[dict[str, str]], context: dict[str, Any] | 
     # ---- Live facts + generation ---------------------------------------------
     facts = await _gather_facts(top, intents, query)
 
-    if use_llm:
-        system = _llm_system_prompt(picks, chunks, facts)
+    if use_claude or use_ollama:
+        system = _llm_system_prompt(picks, chunks, facts, world_knowledge=use_claude)
         history = [{"role": m["role"], "content": m["content"]} for m in messages][-8:]
         try:
-            async for token in llm.stream_chat(system, history):
+            generator = llm.stream_claude(system, history) if use_claude else llm.stream_chat(system, history)
+            async for token in generator:
                 yield {"type": "delta", "text": token}
-        except Exception:  # noqa: BLE001 — fall back mid-flight if Ollama dies
+        except Exception:  # noqa: BLE001 — fall back mid-flight if the LLM dies
             yield {"type": "delta", "text": "\n\n" + _compose(top, picks, facts, intents)}
     else:
         yield {"type": "delta", "text": _compose(top, picks, facts, intents)}
