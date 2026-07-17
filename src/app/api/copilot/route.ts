@@ -2,6 +2,8 @@ import { runCopilot, type CopilotContext } from "@/server/copilot/engine";
 import type { ChatMessage } from "@/server/copilot/protocol";
 
 export const runtime = "nodejs";
+// Claude streaming can take 20s+ — raise Vercel's function limit.
+export const maxDuration = 60;
 
 /** Streams NDJSON CopilotEvents; the client applies globe actions as they arrive. */
 export async function POST(request: Request) {

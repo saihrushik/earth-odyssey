@@ -1,4 +1,8 @@
+import Anthropic from "@anthropic-ai/sdk";
+
 export const runtime = "nodejs";
+// Claude streaming can take 20s+ — raise Vercel's function limit.
+export const maxDuration = 60;
 
 interface PlaceBody {
   name?: string;
@@ -66,6 +70,55 @@ export async function POST(request: Request) {
     } catch {
       // fall through to the Wikipedia fallback
     }
+  }
+
+  // Claude directly in the route (Vercel-friendly) — same recipe as the
+  // Python backend: nearby Wikipedia extracts ground the answer.
+  if (process.env.ANTHROPIC_API_KEY) {
+    const intro = await wikipediaIntro(body.lat, body.lng);
+    const label = [body.name, body.region, body.country].filter(Boolean).join(", ");
+    const client = new Anthropic();
+    const claudeStream = client.messages.stream({
+      model: process.env.CLAUDE_MODEL ?? "claude-opus-4-8",
+      max_tokens: 1024,
+      thinking: { type: "adaptive" },
+      output_config: { effort: "low" },
+      system: `You are the Earth Odyssey Travel Copilot. The user dropped a pin on **${label}** (${body.lat.toFixed(3)}, ${body.lng.toFixed(3)}).
+
+Write, in under 180 words total:
+1. Two-sentence intro — what this place is and why it's interesting.
+2. "**Worth knowing**" — 2 short bullet facts.
+3. "**Travel tips**" — 4 practical bullets (best time to go, getting there/around, one local must-do, one caution or etiquette note).
+
+Rules: real places and facts only — prefer the reference material below; your own knowledge is fine for well-known context; if the pin is remote wilderness or open water, say so and describe the region instead. No invented prices or hotel names. Bold place names. No markdown headings (#) — plain paragraphs and "- " bullets only.
+
+Reference material (nearby Wikipedia extracts):
+${intro || "(none found — rely on your own knowledge, carefully)"}`,
+      messages: [{ role: "user", content: `Tell me about ${label || "this place"}.` }],
+    });
+
+    const encoder = new TextEncoder();
+    const ndjson = new ReadableStream<Uint8Array>({
+      async start(controller) {
+        try {
+          for await (const event of claudeStream) {
+            if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
+              controller.enqueue(encoder.encode(JSON.stringify({ type: "delta", text: event.delta.text }) + "\n"));
+            }
+          }
+        } catch {
+          controller.enqueue(
+            encoder.encode(JSON.stringify({ type: "delta", text: "Couldn't load place details — try again." }) + "\n"),
+          );
+        } finally {
+          controller.enqueue(encoder.encode(JSON.stringify({ type: "done" }) + "\n"));
+          controller.close();
+        }
+      },
+    });
+    return new Response(ndjson, {
+      headers: { "content-type": "application/x-ndjson; charset=utf-8", "cache-control": "no-store" },
+    });
   }
 
   const intro = await wikipediaIntro(body.lat, body.lng);
