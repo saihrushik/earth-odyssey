@@ -20,6 +20,15 @@ export type CopilotAction =
   | { kind: "aurora"; active: boolean }
   | { kind: "chapter"; chapterId: ChapterId };
 
+/** A user-dropped marker anywhere on Earth (search result or globe click). */
+export interface CustomPin {
+  name: string;
+  lat: number;
+  lng: number;
+  country?: string;
+  region?: string;
+}
+
 interface OdysseyState {
   started: boolean;
   chapterId: ChapterId;
@@ -39,8 +48,12 @@ interface OdysseyState {
   copilotOpen: boolean;
   cameraIntent: CameraIntent | null;
   reducedMotion: boolean;
+  /** While set, catalog pins hide and the place panel shows this spot. */
+  customPin: CustomPin | null;
 
   begin: () => void;
+  setCustomPin: (pin: CustomPin) => void;
+  clearCustomPin: () => void;
   setChapter: (id: ChapterId, fly?: boolean) => void;
   openDestination: (id: string) => void;
   closePanel: () => void;
@@ -81,6 +94,19 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
   copilotOpen: false,
   cameraIntent: null,
   reducedMotion: false,
+  customPin: null,
+
+  setCustomPin: (pin) =>
+    set({
+      customPin: pin,
+      activeDestinationId: null,
+      highlightedIds: [],
+      focusedDestinationId: null,
+      started: true, // searching from the intro implies "begin"
+      cameraIntent: flightIntent(pin.lat, pin.lng, 2.1),
+    }),
+
+  clearCustomPin: () => set({ customPin: null }),
 
   begin: () => {
     const first = destinationsForChapter(get().chapterId)[0];
@@ -116,13 +142,15 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
     set({
       chapterId: nextChapter,
       focusedDestinationId: id,
+      customPin: null,
       cameraIntent: flightIntent(dest.lat, dest.lng, 2.2),
       ...(openPanel ? { activeDestinationId: id } : {}),
     });
   },
 
   step: (dir) => {
-    const { chapterId, focusedDestinationId } = get();
+    const { chapterId, focusedDestinationId, customPin } = get();
+    if (customPin) set({ customPin: null });
     const list = destinationsForChapter(chapterId);
     if (list.length === 0) return;
     const idx = list.findIndex((d) => d.id === focusedDestinationId);

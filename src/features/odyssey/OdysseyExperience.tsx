@@ -6,6 +6,7 @@ import { IntroOverlay } from "./ui/IntroOverlay";
 import { HUD } from "./ui/HUD";
 import { ChapterRail } from "./ui/ChapterRail";
 import { DestinationPanel } from "./ui/DestinationPanel";
+import { PlacePanel } from "./ui/PlacePanel";
 import { CopilotPanel } from "./ui/CopilotPanel";
 import { useOdyssey } from "./store/useOdyssey";
 
@@ -61,7 +62,8 @@ export default function OdysseyExperience() {
           if (s.started) s.step(-1);
           break;
         case "Escape":
-          if (s.activeDestinationId) s.closePanel();
+          if (s.customPin) s.clearCustomPin();
+          else if (s.activeDestinationId) s.closePanel();
           else if (s.copilotOpen) s.setCopilotOpen(false);
           break;
         case "Enter":
@@ -84,6 +86,7 @@ export default function OdysseyExperience() {
       <HUD />
       <ChapterRail />
       <DestinationPanel />
+      <PlacePanel />
       <CopilotPanel />
       <IntroOverlay />
     </div>

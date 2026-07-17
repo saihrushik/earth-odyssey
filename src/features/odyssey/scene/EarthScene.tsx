@@ -11,6 +11,7 @@ import { SpaceField } from "./SpaceField";
 import { Satellites } from "./Satellites";
 import { Aurora } from "./Aurora";
 import { Hotspots } from "./Hotspots";
+import { GlobePicker } from "./GlobePicker";
 import { CameraRig } from "./CameraRig";
 import { chapterById } from "../data/chapters";
 import { useOdyssey } from "../store/useOdyssey";
@@ -68,6 +69,7 @@ export function EarthScene() {
         <Moon />
         <Satellites />
         <Hotspots />
+        <GlobePicker />
       </Suspense>
 
       <CameraRig />

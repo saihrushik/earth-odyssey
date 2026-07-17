@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useOdyssey } from "../store/useOdyssey";
 import { useAmbientAudio } from "../hooks/useAmbientAudio";
+import { SearchBar } from "./SearchBar";
 
 function HudButton({
   label,
@@ -61,6 +62,8 @@ export function HUD() {
           AI travel discovery
         </span>
       </div>
+
+      <SearchBar />
 
       <div className="pointer-events-auto flex items-center gap-2.5">
         <HudButton label={soundOn ? "Mute ambient sound" : "Play ambient sound"} active={soundOn} onClick={toggleSound}>

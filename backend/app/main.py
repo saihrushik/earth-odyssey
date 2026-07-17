@@ -26,7 +26,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from . import copilot, llm
+from . import copilot, llm, place
 from .rag import store
 
 app = FastAPI(title="Earth Odyssey Copilot API", version="1.0.0")
@@ -61,6 +61,27 @@ async def health() -> dict[str, Any]:
         "chunks": store.count(),
         "llm": active,
     }
+
+
+class PlaceRequest(BaseModel):
+    name: str
+    lat: float
+    lng: float
+    country: str | None = None
+    region: str | None = None
+
+
+@app.post("/api/place")
+async def place_route(req: PlaceRequest) -> StreamingResponse:
+    async def ndjson():
+        try:
+            async for event in place.run_place(req.model_dump()):
+                yield json.dumps(event, ensure_ascii=False) + "\n"
+        except Exception as err:  # noqa: BLE001
+            yield json.dumps({"type": "error", "message": str(err)}) + "\n"
+            yield json.dumps({"type": "done"}) + "\n"
+
+    return StreamingResponse(ndjson(), media_type="application/x-ndjson")
 
 
 @app.post("/api/copilot")

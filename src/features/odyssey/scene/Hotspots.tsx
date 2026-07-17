@@ -118,12 +118,63 @@ function Hotspot({ dest }: { dest: Destination }) {
   );
 }
 
+/** Gold marker for a searched / clicked place — replaces the catalog pins. */
+function CustomPinMarker() {
+  const pin = useOdyssey((s) => s.customPin);
+  const ring = useRef<THREE.Mesh>(null);
+  const position = useMemo(
+    () => (pin ? latLngToVector3(pin.lat, pin.lng, SURFACE) : null),
+    [pin],
+  );
+
+  useFrame((state) => {
+    if (ring.current) {
+      const pulse = 1 + 0.4 * (0.5 + 0.5 * Math.sin(state.clock.elapsedTime * 2.6));
+      ring.current.scale.setScalar(pulse);
+    }
+  });
+
+  if (!pin || !position) return null;
+  const normal = position.clone().normalize();
+  return (
+    <group position={position} onUpdate={(g) => g.lookAt(normal.clone().multiplyScalar(2))}>
+      <mesh>
+        <circleGeometry args={[0.014, 24]} />
+        <meshBasicMaterial color="#ffd166" transparent toneMapped={false} />
+      </mesh>
+      <mesh ref={ring}>
+        <ringGeometry args={[0.022, 0.03, 32]} />
+        <meshBasicMaterial color="#ffd166" transparent toneMapped={false} side={THREE.DoubleSide} />
+      </mesh>
+      <Html center position={[0, 0.05, 0]} style={{ pointerEvents: "none" }}>
+        <div
+          style={{
+            whiteSpace: "nowrap",
+            padding: "4px 10px",
+            borderRadius: 999,
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#fff7e6",
+            background: "rgba(26,20,8,0.6)",
+            border: "1px solid #ffd16688",
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          {pin.name}
+        </div>
+      </Html>
+    </group>
+  );
+}
+
 export function Hotspots() {
+  const hasCustomPin = useOdyssey((s) => s.customPin !== null);
   return (
     <group>
-      {DESTINATIONS.map((d) => (
-        <Hotspot key={d.id} dest={d} />
-      ))}
+      {/* A dropped pin takes the stage alone — catalog pins come back on clear. */}
+      {!hasCustomPin && DESTINATIONS.map((d) => <Hotspot key={d.id} dest={d} />)}
+      <CustomPinMarker />
     </group>
   );
 }
