@@ -46,7 +46,7 @@ export function SearchBar() {
   };
 
   return (
-    <div className="pointer-events-auto relative w-56 sm:w-72">
+    <div className="pointer-events-auto relative w-full sm:w-72">
       <div className="ody-glass flex items-center gap-2 rounded-full px-3 py-1.5">
         <span className="text-[13px] text-sky-200/60">🔍</span>
         <input
@@ -65,7 +65,12 @@ export function SearchBar() {
           }}
           placeholder="Search any place on Earth…"
           aria-label="Search any place on Earth"
-          className="w-full bg-transparent text-[13px] text-sky-50 placeholder:text-sky-200/40 focus:outline-none"
+          enterKeyHint="search"
+          autoCapitalize="words"
+          autoCorrect="off"
+          // 16px on phones: anything smaller makes iOS Safari zoom the page on
+          // focus, which this fixed, non-scrolling layout can never undo.
+          className="w-full bg-transparent text-base text-sky-50 placeholder:text-sky-200/40 focus:outline-none sm:text-[13px]"
         />
         {status === "busy" && (
           <span

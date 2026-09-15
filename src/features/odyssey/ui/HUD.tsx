@@ -22,7 +22,7 @@ function HudButton({
       aria-pressed={active}
       title={label}
       onClick={onClick}
-      className={`ody-glass grid h-10 w-10 place-items-center rounded-full text-sm transition-all hover:scale-105 ${
+      className={`ody-glass grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm transition-all hover:scale-105 sm:h-10 sm:w-10 ${
         active ? "border-sky-300/50 text-sky-200" : "text-sky-100/60"
       }`}
     >
@@ -54,7 +54,9 @@ export function HUD() {
     <motion.header
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0, transition: { delay: 0.8, duration: 0.9 } }}
-      className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between p-5"
+      // Phones stack the header into rows so nothing (least of all Copilot)
+      // gets pushed off the right edge; sm+ keeps the original single row.
+      className="pointer-events-none absolute inset-x-0 top-0 z-20 flex flex-col gap-2.5 p-4 pt-[max(1rem,env(safe-area-inset-top))] sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:p-5"
     >
       <div className="pointer-events-auto select-none">
         <span className="text-sm font-light tracking-[0.4em] text-white/90">EARTH ODYSSEY</span>
@@ -65,7 +67,7 @@ export function HUD() {
 
       <SearchBar />
 
-      <div className="pointer-events-auto flex items-center gap-2.5">
+      <div className="ody-noscroll pointer-events-auto flex items-center gap-2 overflow-x-auto sm:gap-2.5 sm:overflow-x-visible">
         <HudButton label={soundOn ? "Mute ambient sound" : "Play ambient sound"} active={soundOn} onClick={toggleSound}>
           {soundOn ? "♪" : "∅"}
         </HudButton>
@@ -92,7 +94,7 @@ export function HUD() {
         <button
           onClick={() => setCopilotOpen(!copilotOpen)}
           aria-pressed={copilotOpen}
-          className={`ody-glass flex h-10 items-center gap-2 rounded-full px-4 text-xs tracking-[0.15em] uppercase transition-all hover:scale-[1.03] ${
+          className={`ody-glass ml-auto flex h-9 shrink-0 items-center gap-2 rounded-full px-3.5 text-[11px] tracking-[0.15em] uppercase transition-all hover:scale-[1.03] sm:ml-0 sm:h-10 sm:px-4 sm:text-xs ${
             copilotOpen ? "border-cyan-300/50 text-cyan-100" : "text-sky-100/75"
           }`}
         >

@@ -7,6 +7,7 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import * as THREE from "three";
 import gsap from "gsap";
 import { latLngToVector3 } from "../lib/geo";
+import { beginPinch, endPinch } from "../lib/pinch";
 import { useOdyssey } from "../store/useOdyssey";
 
 const MIN_DIST = 1.35;
@@ -14,7 +15,9 @@ const MAX_DIST = 7;
 
 /**
  * Owns all camera motion:
- *  - free orbit/drag via OrbitControls (pinch to zoom, wheel is reserved for navigation)
+ *  - free orbit/drag via OrbitControls (zoom disabled there — see pinch handler below)
+ *  - manual two-finger pinch-to-zoom (kept out of OrbitControls so desktop's
+ *    wheel-to-step-destination gesture never fights a built-in wheel-zoom)
  *  - cinematic GSAP flights whenever the store publishes a camera intent
  *  - slow automatic rotation while idle
  */
@@ -97,6 +100,55 @@ export function CameraRig() {
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   }, [gl, step]);
+
+  // ---- Pinch = zoom in / out (touch devices) -----------------------------
+  useEffect(() => {
+    const el = gl.domElement;
+    const spherical = new THREE.Spherical();
+    let startGap = 0;
+    let startRadius = 0;
+
+    const gapOf = (t: TouchList) =>
+      Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length !== 2) return;
+      tweenRef.current?.kill(); // a pinch takes over from any in-progress flight
+      beginPinch(); // so lifting off doesn't read as a tap on the globe
+      startGap = gapOf(e.touches);
+      startRadius = camera.position.length();
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length !== 2 || startGap === 0) return;
+      e.preventDefault(); // stop the browser zooming the page instead
+      const gap = gapOf(e.touches);
+      if (gap === 0) return;
+      // Fingers apart → smaller radius → closer to the planet.
+      spherical.setFromVector3(camera.position);
+      spherical.radius = THREE.MathUtils.clamp(startRadius * (startGap / gap), MIN_DIST, MAX_DIST);
+      camera.position.setFromSpherical(spherical);
+      camera.lookAt(0, 0, 0);
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length < 2 && startGap !== 0) {
+        startGap = 0;
+        endPinch();
+      }
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    el.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, [gl, camera]);
 
   // A user drag takes over from any in-progress flight.
   useEffect(() => {

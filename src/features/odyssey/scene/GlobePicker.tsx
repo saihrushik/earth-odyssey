@@ -2,6 +2,7 @@
 
 import { useOdyssey } from "../store/useOdyssey";
 import { vector3ToLatLng } from "../lib/geo";
+import { pinchInProgress } from "../lib/pinch";
 
 /**
  * Invisible sphere over the Earth that turns a click anywhere on the planet
@@ -17,6 +18,8 @@ export function GlobePicker() {
         // OrbitControls drags end over the sphere too — only treat a
         // near-stationary pointer as a click (delta is px moved since down).
         if (e.delta > 6) return;
+        // Lifting off a pinch also reads as a click; that's a zoom, not a pin.
+        if (pinchInProgress()) return;
         e.stopPropagation();
         const { lat, lng } = vector3ToLatLng(e.point);
 

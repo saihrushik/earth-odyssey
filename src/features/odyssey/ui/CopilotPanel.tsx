@@ -48,7 +48,10 @@ export function CopilotPanel() {
   }, [messages]);
 
   useEffect(() => {
-    if (open) inputRef.current?.focus();
+    // Don't autofocus on touch devices — the keyboard would cover the panel
+    // before the user has read anything. They can tap the field themselves.
+    const coarsePointer = window.matchMedia?.("(pointer: coarse)").matches;
+    if (open && !coarsePointer) inputRef.current?.focus();
   }, [open]);
 
   const submit = () => {
@@ -64,7 +67,8 @@ export function CopilotPanel() {
           initial={{ opacity: 0, y: 30, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 26 } }}
           exit={{ opacity: 0, y: 30, scale: 0.96, transition: { duration: 0.25 } }}
-          className="ody-glass absolute bottom-24 left-4 z-30 flex h-[min(560px,70vh)] w-[min(400px,92vw)] flex-col overflow-hidden rounded-3xl"
+          // dvh (not vh) so the panel shrinks when the mobile keyboard opens.
+          className="ody-glass absolute bottom-20 left-1/2 z-30 flex h-[min(560px,62dvh)] w-[min(400px,94vw)] -translate-x-1/2 flex-col overflow-hidden rounded-3xl sm:bottom-24 sm:left-4 sm:h-[min(560px,70dvh)] sm:translate-x-0"
           aria-label="AI Travel Copilot"
           style={{ boxShadow: "0 0 60px -12px rgba(56, 189, 248, 0.25), 0 24px 80px -24px rgba(0,0,0,0.8)" }}
         >
@@ -172,7 +176,9 @@ export function CopilotPanel() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about anywhere on Earth…"
               aria-label="Message the travel copilot"
-              className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-[13px] text-white placeholder-sky-200/30 outline-none transition-colors focus:border-cyan-300/40"
+              enterKeyHint="send"
+              // 16px on phones — smaller text triggers iOS Safari's focus zoom.
+              className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-base text-white placeholder-sky-200/30 outline-none transition-colors focus:border-cyan-300/40 sm:text-[13px]"
             />
             <button
               type="submit"
