@@ -10,6 +10,7 @@ import { Moon } from "./Moon";
 import { SpaceField } from "./SpaceField";
 import { Satellites } from "./Satellites";
 import { Aurora } from "./Aurora";
+import { Borders } from "./Borders";
 import { Hotspots } from "./Hotspots";
 import { GlobePicker } from "./GlobePicker";
 import { CameraRig } from "./CameraRig";
@@ -64,6 +65,7 @@ export function EarthScene() {
       <Suspense fallback={null}>
         <SpaceField sun={sun} perf={perf} />
         <Earth sun={sun} perf={perf} />
+        <Borders />
         <Atmosphere sun={sun} />
         <Aurora />
         <Moon />

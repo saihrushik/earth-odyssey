@@ -38,8 +38,10 @@ export function HUD() {
   const auroraActive = useOdyssey((s) => s.auroraActive);
   const stylized = useOdyssey((s) => s.visualStyle === "stylized");
   const perfMode = useOdyssey((s) => s.perfMode);
+  const bordersOn = useOdyssey((s) => s.bordersOn);
   const toggleVisualStyle = useOdyssey((s) => s.toggleVisualStyle);
   const setPerfMode = useOdyssey((s) => s.setPerfMode);
+  const toggleBorders = useOdyssey((s) => s.toggleBorders);
   const copilotOpen = useOdyssey((s) => s.copilotOpen);
   const toggleSound = useOdyssey((s) => s.toggleSound);
   const toggleNightSide = useOdyssey((s) => s.toggleNightSide);
@@ -83,6 +85,13 @@ export function HUD() {
           onClick={toggleVisualStyle}
         >
           ✎
+        </HudButton>
+        <HudButton
+          label={bordersOn ? "Hide country borders" : "Show country borders"}
+          active={bordersOn}
+          onClick={toggleBorders}
+        >
+          ⊞
         </HudButton>
         <HudButton
           label={perfMode ? "Performance mode on (battery-friendly)" : "Quality mode on"}

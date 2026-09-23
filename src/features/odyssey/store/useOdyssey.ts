@@ -45,6 +45,8 @@ interface OdysseyState {
   visualStyle: "stylized" | "realistic";
   /** Reduced GPU load: lower DPR, no post-processing, fewer particles. */
   perfMode: boolean;
+  /** Country outlines + major city dots — map-style orientation aid. */
+  bordersOn: boolean;
   copilotOpen: boolean;
   cameraIntent: CameraIntent | null;
   reducedMotion: boolean;
@@ -66,6 +68,7 @@ interface OdysseyState {
   toggleSound: () => void;
   toggleVisualStyle: () => void;
   setPerfMode: (on: boolean) => void;
+  toggleBorders: () => void;
   setCopilotOpen: (open: boolean) => void;
   setReducedMotion: (v: boolean) => void;
   applyCopilotActions: (actions: CopilotAction[]) => void;
@@ -91,6 +94,7 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
   soundOn: false,
   visualStyle: "stylized",
   perfMode: true,
+  bordersOn: true,
   copilotOpen: false,
   cameraIntent: null,
   reducedMotion: false,
@@ -189,6 +193,7 @@ export const useOdyssey = create<OdysseyState>((set, get) => ({
   toggleVisualStyle: () =>
     set((s) => ({ visualStyle: s.visualStyle === "stylized" ? "realistic" : "stylized" })),
   setPerfMode: (on) => set({ perfMode: on }),
+  toggleBorders: () => set((s) => ({ bordersOn: !s.bordersOn })),
   setCopilotOpen: (open) => set({ copilotOpen: open }),
   setReducedMotion: (v) => set({ reducedMotion: v }),
 
