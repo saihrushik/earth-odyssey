@@ -54,6 +54,10 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", type=int, default=5)
     ap.add_argument("--show-misses", action="store_true")
+    # Regression gates for CI: the run exits non-zero if the production path
+    # (C_full) drops below these, so a retrieval regression fails the build.
+    ap.add_argument("--min-recall", type=float, default=None)
+    ap.add_argument("--min-hit1", type=float, default=None)
     args = ap.parse_args()
     k = args.k
 
@@ -127,6 +131,18 @@ def main() -> None:
 
     RESULTS_PATH.write_text(json.dumps({"k": k, "n": n, "summary": summary, "questions": per_q}, indent=2, ensure_ascii=False))
     print(f"\nFull results → {RESULTS_PATH.relative_to(Path(__file__).parent)}")
+
+    # CI gate: compare the production path against the floors, if given.
+    prod = summary["C_full"]
+    failures = []
+    if args.min_recall is not None and prod[f"recall@{k}"] < args.min_recall:
+        failures.append(f"recall@{k} {prod[f'recall@{k}']:.2f} < required {args.min_recall:.2f}")
+    if args.min_hit1 is not None and prod["hit@1"] < args.min_hit1:
+        failures.append(f"hit@1 {prod['hit@1']:.2f} < required {args.min_hit1:.2f}")
+    if failures:
+        raise SystemExit("\n[eval] RETRIEVAL REGRESSION\n  " + "\n  ".join(failures))
+    if args.min_recall is not None or args.min_hit1 is not None:
+        print("[eval] thresholds met")
 
 
 if __name__ == "__main__":

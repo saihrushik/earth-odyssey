@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  web:
+    name: Typecheck · lint · build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - run: npm run build
+
+  retrieval-eval:
+    name: Retrieval eval (regression gate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install backend deps
+        working-directory: backend
+        run: pip install -r requirements.txt
+
+      # Embeddings run locally (ONNX, CPU) and the eval only exercises
+      # retrieval, so this gate needs no API key and costs nothing to run.
+      - name: Build the vector index
+        working-directory: backend
+        run: python -m app.rag.ingest
+
+      # Floors sit just under the measured numbers (hit@1 0.89, recall@5 1.00);
+      # a change that makes retrieval worse fails the build instead of shipping.
+      - name: Score the pipeline
+        working-directory: backend
+        run: python eval_retrieval.py --show-misses --min-recall 0.95 --min-hit1 0.85
+
+      - name: Upload scores
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-eval-results
+          path: backend/eval/results.json

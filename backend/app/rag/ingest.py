@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -21,7 +22,11 @@ import httpx
 
 from . import documents, embeddings, store
 
-KNOWLEDGE_DIR = Path(__file__).resolve().parents[3] / "knowledge-base"
+# Overridable so containers (and any layout where backend/ is not a sibling of
+# knowledge-base/) can point at the corpus explicitly.
+KNOWLEDGE_DIR = Path(
+    os.environ.get("KNOWLEDGE_BASE_DIR", Path(__file__).resolve().parents[3] / "knowledge-base")
+)
 
 CHARS_PER_TOKEN = 4
 MIN_CHARS = 500 * CHARS_PER_TOKEN
