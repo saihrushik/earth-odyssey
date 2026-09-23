@@ -84,11 +84,15 @@ export function rewriteQuery(query: string): string {
     [/\bkids?|children|family\b/, " family "],
     [/\btrek(king)?|trail|walk\b/, " hiking "],
     [/\bbeach(es)?\b/, " beach island snorkeling "],
-    [/\bsnow|winter\b/, " winter arctic skiing "],
+    [/\b(ski\w*|snowboard\w*)\b/, " skiing winter alpine "],
     [/\bquiet|no crowds?|avoid crowds?|off the beaten\b/, " hidden gems crowdsfree quiet "],
     [/\bsunsets?|golden hour\b/, " sunset views golden hour "],
   ];
-  for (const [re, add] of expansions) if (re.test(q)) q += add;
+  // Match against the ORIGINAL query, never the growing one: expansions that
+  // test `q` fire on words other expansions just injected (e.g. the aurora rule
+  // adds "winter", which then tripped the winter rule), compounding noise.
+  const source = q;
+  for (const [re, add] of expansions) if (re.test(source)) q += add;
   return q.replace(/\s+/g, " ").trim() || query;
 }
 

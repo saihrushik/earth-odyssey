@@ -13,7 +13,7 @@ _EXPANSIONS: list[tuple[str, str]] = [
     (r"\bkids?|children|family\b", " family "),
     (r"\btrek(king)?|trail|walk\b", " hiking "),
     (r"\bbeach(es)?\b", " beach island snorkeling "),
-    (r"\bsnow|winter\b", " winter arctic skiing "),
+    (r"\b(ski\w*|snowboard\w*)\b", " skiing winter alpine "),
     (r"\bquiet|no crowds?|avoid crowds?|off the beaten\b", " hidden gems crowdsfree quiet "),
     (r"\bsunsets?|golden hour\b", " sunset views golden hour "),
 ]
@@ -27,8 +27,12 @@ def _tokenize(text: str) -> set[str]:
 
 def rewrite_query(query: str) -> str:
     q = re.sub(_FILLER, " ", query.lower())
+    # Match against the ORIGINAL query, never the growing one: expansions that
+    # test ``q`` fire on words other expansions just injected (the aurora rule
+    # adds "winter", which then tripped the winter rule), compounding noise.
+    source = q
     for pattern, extra in _EXPANSIONS:
-        if re.search(pattern, q):
+        if re.search(pattern, source):
             q += extra
     return re.sub(r"\s+", " ", q).strip() or query
 
