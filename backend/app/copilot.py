@@ -181,7 +181,11 @@ async def run_copilot(messages: list[dict[str, str]], context: dict[str, Any] | 
         try:
             async for token in llm.stream_claude(system, history):
                 yield {"type": "delta", "text": token}
-        except Exception:  # noqa: BLE001 — fall back mid-flight if the API call fails
+        except Exception as err:  # noqa: BLE001 — fall back mid-flight if the API call fails
+            # Log it: a silent fallback looks like a working copilot writing
+            # unusually templated answers, which is how a bad CLAUDE_MODEL
+            # went unnoticed until a benchmark showed suspicious timings.
+            print(f"[copilot] Claude call failed ({type(err).__name__}: {err}) — using composer", flush=True)
             yield {"type": "delta", "text": "\n\n" + _compose(top, picks, facts, intents)}
     else:
         yield {"type": "delta", "text": _compose(top, picks, facts, intents)}

@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { claudeModel, tuningFor } from "@/server/copilot/claude";
 
 export const runtime = "nodejs";
 // Claude streaming can take 20s+ — raise Vercel's function limit.
@@ -79,10 +80,9 @@ export async function POST(request: Request) {
     const label = [body.name, body.region, body.country].filter(Boolean).join(", ");
     const client = new Anthropic();
     const claudeStream = client.messages.stream({
-      model: process.env.CLAUDE_MODEL ?? "claude-opus-4-8",
+      model: claudeModel(),
       max_tokens: 1024,
-      thinking: { type: "adaptive" },
-      output_config: { effort: "low" },
+      ...tuningFor(claudeModel()),
       system: `You are the Earth Odyssey Travel Copilot. The user dropped a pin on **${label}** (${body.lat.toFixed(3)}, ${body.lng.toFixed(3)}).
 
 Write, in under 180 words total:

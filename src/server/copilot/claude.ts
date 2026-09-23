@@ -17,7 +17,20 @@ import type { ChatMessage, CopilotEvent, GlobeAction } from "./protocol";
  * Next.js app runs (Vercel included) with just ANTHROPIC_API_KEY set.
  */
 
-const claudeModel = () => process.env.CLAUDE_MODEL ?? "claude-opus-4-8";
+export const claudeModel = () => process.env.CLAUDE_MODEL ?? "claude-opus-4-8";
+
+/**
+ * Adaptive thinking and `output_config.effort` arrived with the 4.6 generation.
+ * Older models (haiku-4-5, sonnet-4-5, …) reject both with a 400, so sending
+ * them unconditionally makes any CLAUDE_MODEL downgrade fail.
+ */
+const ADAPTIVE_MODELS = ["opus-4-6", "opus-4-7", "opus-4-8", "sonnet-4-6", "sonnet-5", "fable-5", "mythos-5"];
+
+export function tuningFor(model: string) {
+  return ADAPTIVE_MODELS.some((tag) => model.includes(tag))
+    ? { thinking: { type: "adaptive" as const }, output_config: { effort: "low" as const } }
+    : {};
+}
 
 export const claudeAvailable = () => Boolean(process.env.ANTHROPIC_API_KEY);
 
@@ -140,8 +153,7 @@ export async function* runClaudeCopilot(
   const stream = client.messages.stream({
     model: claudeModel(),
     max_tokens: 2048,
-    thinking: { type: "adaptive" },
-    output_config: { effort: "low" },
+    ...tuningFor(claudeModel()),
     system: systemPrompt(picks, docs, facts, focusNote),
     messages: messages.slice(-8).map((m) => ({ role: m.role, content: m.content })),
   });
