@@ -94,8 +94,10 @@ function Hotspot({ dest }: { dest: Destination }) {
         />
       </mesh>
 
+      {/* Low zIndexRange: drei defaults to ~16.7M, which floats scene labels
+          above every UI panel. Stay under the panels (z-20 / z-30). */}
       {facingCam && (hovered || focused || highlighted) && (
-        <Html center position={[0, 0.045, 0]} style={{ pointerEvents: "none" }}>
+        <Html center position={[0, 0.045, 0]} zIndexRange={[10, 0]} style={{ pointerEvents: "none" }}>
           <div
             style={{
               whiteSpace: "nowrap",
@@ -146,7 +148,7 @@ function CustomPinMarker() {
         <ringGeometry args={[0.022, 0.03, 32]} />
         <meshBasicMaterial color="#ffd166" transparent toneMapped={false} side={THREE.DoubleSide} />
       </mesh>
-      <Html center position={[0, 0.05, 0]} style={{ pointerEvents: "none" }}>
+      <Html center position={[0, 0.05, 0]} zIndexRange={[10, 0]} style={{ pointerEvents: "none" }}>
         <div
           style={{
             whiteSpace: "nowrap",
