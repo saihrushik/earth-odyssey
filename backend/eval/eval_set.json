@@ -1,0 +1,594 @@
+[
+  {
+    "id": "q01",
+    "question": "Why do the Taj Mahal's minarets lean outward?",
+    "relevant_doc_ids": [
+      "taj-mahal:overview"
+    ],
+    "expected_answer": "So they would fall away from the tomb in an earthquake",
+    "category": "fact"
+  },
+  {
+    "id": "q02",
+    "question": "Can you actually see the Great Wall of China from the Moon?",
+    "relevant_doc_ids": [
+      "great-wall:overview"
+    ],
+    "expected_answer": "No, not with the naked eye",
+    "category": "fact"
+  },
+  {
+    "id": "q03",
+    "question": "How precisely were the stones at Machu Picchu cut?",
+    "relevant_doc_ids": [
+      "machu-picchu:overview"
+    ],
+    "expected_answer": "So precisely a knife blade can't fit between them",
+    "category": "fact"
+  },
+  {
+    "id": "q04",
+    "question": "What's the highest train station in Europe?",
+    "relevant_doc_ids": [
+      "swiss-alps:overview"
+    ],
+    "expected_answer": "Jungfraujoch, 3,454 m",
+    "category": "fact"
+  },
+  {
+    "id": "q05",
+    "question": "What happens in Bali on Nyepi?",
+    "relevant_doc_ids": [
+      "bali:overview"
+    ],
+    "expected_answer": "Day of Silence; the whole island shuts down, even the airport",
+    "category": "fact"
+  },
+  {
+    "id": "q06",
+    "question": "Why is Lake Louise that turquoise color?",
+    "relevant_doc_ids": [
+      "banff:overview"
+    ],
+    "expected_answer": "Glacial rock flour suspended in meltwater",
+    "category": "fact"
+  },
+  {
+    "id": "q07",
+    "question": "How often does Old Faithful erupt?",
+    "relevant_doc_ids": [
+      "yellowstone:overview"
+    ],
+    "expected_answer": "Every 60–110 minutes",
+    "category": "fact"
+  },
+  {
+    "id": "q08",
+    "question": "Where can I snorkel between two continents?",
+    "relevant_doc_ids": [
+      "iceland:overview"
+    ],
+    "expected_answer": "Þingvellir, Iceland",
+    "category": "fact"
+  },
+  {
+    "id": "q09",
+    "question": "Is Santorini connected to the Atlantis legend?",
+    "relevant_doc_ids": [
+      "santorini:overview"
+    ],
+    "expected_answer": "The ~1600 BC Thera eruption possibly seeded the legend",
+    "category": "fact"
+  },
+  {
+    "id": "q10",
+    "question": "Which movie used Petra's Treasury as a filming location?",
+    "relevant_doc_ids": [
+      "petra:overview",
+      "guide:anime"
+    ],
+    "expected_answer": "Indiana Jones and the Last Crusade",
+    "category": "fact"
+  },
+  {
+    "id": "q11",
+    "question": "What is Venice built on?",
+    "relevant_doc_ids": [
+      "venice:overview"
+    ],
+    "expected_answer": "~10 million timber piles on lagoon mudflats",
+    "category": "fact"
+  },
+  {
+    "id": "q12",
+    "question": "Why do the floors at Nijo Castle squeak?",
+    "relevant_doc_ids": [
+      "kyoto:overview"
+    ],
+    "expected_answer": "Nightingale floors chirp to reveal intruders",
+    "category": "fact"
+  },
+  {
+    "id": "q13",
+    "question": "Which is the lowest-lying country on the planet?",
+    "relevant_doc_ids": [
+      "maldives:overview"
+    ],
+    "expected_answer": "Maldives, average ground level 1.5 m",
+    "category": "fact"
+  },
+  {
+    "id": "q14",
+    "question": "When did Mount Fuji last erupt?",
+    "relevant_doc_ids": [
+      "mount-fuji:overview"
+    ],
+    "expected_answer": "1707",
+    "category": "fact"
+  },
+  {
+    "id": "q15",
+    "question": "What makes the aurora green versus purple?",
+    "relevant_doc_ids": [
+      "northern-lights:overview"
+    ],
+    "expected_answer": "Oxygen glows green/red, nitrogen blue-purple",
+    "category": "fact"
+  },
+  {
+    "id": "q16",
+    "question": "How long is Sognefjord?",
+    "relevant_doc_ids": [
+      "norwegian-fjords:overview"
+    ],
+    "expected_answer": "204 km, world's second-longest fjord",
+    "category": "fact"
+  },
+  {
+    "id": "q17",
+    "question": "How deep does the Derinkuyu underground city go?",
+    "relevant_doc_ids": [
+      "cappadocia:overview",
+      "cappadocia:experience"
+    ],
+    "expected_answer": "Eighteen storeys; sheltered 20,000 people",
+    "category": "fact"
+  },
+  {
+    "id": "q18",
+    "question": "How old is the oldest rock exposed in the Grand Canyon?",
+    "relevant_doc_ids": [
+      "grand-canyon:overview"
+    ],
+    "expected_answer": "~1.8 billion years",
+    "category": "fact"
+  },
+  {
+    "id": "q19",
+    "question": "Where were overwater bungalows invented?",
+    "relevant_doc_ids": [
+      "bora-bora:overview"
+    ],
+    "expected_answer": "French Polynesia, 1967",
+    "category": "fact"
+  },
+  {
+    "id": "q20",
+    "question": "Do I need a visa for the Taj Mahal trip and how long does it take?",
+    "relevant_doc_ids": [
+      "taj-mahal:practical"
+    ],
+    "expected_answer": "e-Visa for 170+ nationalities, ~72 hours",
+    "category": "practical"
+  },
+  {
+    "id": "q21",
+    "question": "What day of the week is the Taj Mahal closed?",
+    "relevant_doc_ids": [
+      "taj-mahal:practical"
+    ],
+    "expected_answer": "Friday",
+    "category": "practical"
+  },
+  {
+    "id": "q22",
+    "question": "Which section of the Great Wall should I avoid on weekends?",
+    "relevant_doc_ids": [
+      "great-wall:practical",
+      "guide:crowds"
+    ],
+    "expected_answer": "Badaling",
+    "category": "practical"
+  },
+  {
+    "id": "q23",
+    "question": "How long should I spend acclimatizing before Machu Picchu?",
+    "relevant_doc_ids": [
+      "machu-picchu:practical"
+    ],
+    "expected_answer": "Acclimatize in Cusco (3,400 m); 3–5 day trip",
+    "category": "practical"
+  },
+  {
+    "id": "q24",
+    "question": "Is the Swiss Travel Pass worth it for getting around the Alps?",
+    "relevant_doc_ids": [
+      "swiss-alps:practical"
+    ],
+    "expected_answer": "Covers trains, buses, boats and many cable cars",
+    "category": "practical"
+  },
+  {
+    "id": "q25",
+    "question": "What's a backpacker daily budget in Bali?",
+    "relevant_doc_ids": [
+      "bali:practical"
+    ],
+    "expected_answer": "~$30/day",
+    "category": "practical"
+  },
+  {
+    "id": "q26",
+    "question": "Can I drive my own car to Moraine Lake?",
+    "relevant_doc_ids": [
+      "banff:practical"
+    ],
+    "expected_answer": "No, private cars banned; use park shuttles",
+    "category": "practical"
+  },
+  {
+    "id": "q27",
+    "question": "Which airport should I fly into for Yellowstone?",
+    "relevant_doc_ids": [
+      "yellowstone:practical"
+    ],
+    "expected_answer": "Bozeman or Jackson Hole",
+    "category": "practical"
+  },
+  {
+    "id": "q28",
+    "question": "Do I need a 4x4 to drive Iceland's Ring Road?",
+    "relevant_doc_ids": [
+      "iceland:practical"
+    ],
+    "expected_answer": "No; 4x4 only for highland F-roads in summer",
+    "category": "practical"
+  },
+  {
+    "id": "q29",
+    "question": "What's the Jordan Pass and should I buy it?",
+    "relevant_doc_ids": [
+      "petra:practical"
+    ],
+    "expected_answer": "Bundles visa fee with Petra entry; buy before arrival",
+    "category": "practical"
+  },
+  {
+    "id": "q30",
+    "question": "When is Venice's Carnevale?",
+    "relevant_doc_ids": [
+      "venice:practical"
+    ],
+    "expected_answer": "February",
+    "category": "practical"
+  },
+  {
+    "id": "q31",
+    "question": "How do I get from Tokyo to Kyoto?",
+    "relevant_doc_ids": [
+      "kyoto:practical"
+    ],
+    "expected_answer": "Shinkansen, ~2h15",
+    "category": "practical"
+  },
+  {
+    "id": "q32",
+    "question": "How much does a luxury day in the Maldives cost?",
+    "relevant_doc_ids": [
+      "maldives:practical"
+    ],
+    "expected_answer": "~$1,200/day",
+    "category": "practical"
+  },
+  {
+    "id": "q33",
+    "question": "Do I need to book a slot to climb Mount Fuji?",
+    "relevant_doc_ids": [
+      "mount-fuji:practical"
+    ],
+    "expected_answer": "Yes, book the Yoshida trail slot",
+    "category": "practical"
+  },
+  {
+    "id": "q34",
+    "question": "How cold does it get on an aurora chase in Tromsø?",
+    "relevant_doc_ids": [
+      "northern-lights:practical"
+    ],
+    "expected_answer": "Dress for -15°C",
+    "category": "practical"
+  },
+  {
+    "id": "q35",
+    "question": "What currency do they use in Cappadocia?",
+    "relevant_doc_ids": [
+      "cappadocia:practical"
+    ],
+    "expected_answer": "Turkish Lira (TRY)",
+    "category": "practical"
+  },
+  {
+    "id": "q36",
+    "question": "Is it safe to hike from the Grand Canyon rim to the river and back in a day?",
+    "relevant_doc_ids": [
+      "grand-canyon:practical"
+    ],
+    "expected_answer": "No, never day-hike rim-to-river",
+    "category": "practical"
+  },
+  {
+    "id": "q37",
+    "question": "How do I get from the Bora Bora airport to my resort?",
+    "relevant_doc_ids": [
+      "bora-bora:practical"
+    ],
+    "expected_answer": "Resorts collect you by boat from the airport motu",
+    "category": "practical"
+  },
+  {
+    "id": "q38",
+    "question": "What should I eat in Jordan?",
+    "relevant_doc_ids": [
+      "petra:experience"
+    ],
+    "expected_answer": "Mansaf, maqluba, Bedouin zarb",
+    "category": "experience"
+  },
+  {
+    "id": "q39",
+    "question": "Hidden gems near Santorini away from Oia?",
+    "relevant_doc_ids": [
+      "santorini:experience",
+      "guide:crowds"
+    ],
+    "expected_answer": "Pyrgos, Emporio, Vlychada, Megalochori",
+    "category": "experience"
+  },
+  {
+    "id": "q40",
+    "question": "Where can I swim with manta rays in the Maldives?",
+    "relevant_doc_ids": [
+      "maldives:experience",
+      "maldives:overview"
+    ],
+    "expected_answer": "Hanifaru Bay, Baa Atoll",
+    "category": "experience"
+  },
+  {
+    "id": "q41",
+    "question": "Best day trips from Kyoto?",
+    "relevant_doc_ids": [
+      "kyoto:experience"
+    ],
+    "expected_answer": "Nara (45 min), Osaka (30 min), Himeji (1h)",
+    "category": "experience"
+  },
+  {
+    "id": "q42",
+    "question": "What's Swiss alpine mac and cheese called?",
+    "relevant_doc_ids": [
+      "swiss-alps:experience"
+    ],
+    "expected_answer": "Älplermagronen",
+    "category": "experience"
+  },
+  {
+    "id": "q43",
+    "question": "Where's the best spot for the classic Mount Fuji pagoda photo?",
+    "relevant_doc_ids": [
+      "mount-fuji:experience"
+    ],
+    "expected_answer": "Chureito Pagoda",
+    "category": "experience"
+  },
+  {
+    "id": "q44",
+    "question": "Quiet alternative to the Golden Circle in Iceland?",
+    "relevant_doc_ids": [
+      "guide:crowds",
+      "iceland:experience"
+    ],
+    "expected_answer": "Westfjords",
+    "category": "experience"
+  },
+  {
+    "id": "q45",
+    "question": "I want to see the northern lights, where and when should I go?",
+    "relevant_doc_ids": [
+      "guide:aurora",
+      "northern-lights:overview",
+      "northern-lights:practical"
+    ],
+    "expected_answer": "Above 65°N Sep–Mar; Tromsø, Abisko, Iceland, Lapland",
+    "category": "recommendation"
+  },
+  {
+    "id": "q46",
+    "question": "Cheap destinations for a 3-week trip on $2,500?",
+    "relevant_doc_ids": [
+      "guide:budget"
+    ],
+    "expected_answer": "Bali or Cappadocia",
+    "category": "recommendation"
+  },
+  {
+    "id": "q47",
+    "question": "Best places for an overwater villa honeymoon?",
+    "relevant_doc_ids": [
+      "guide:luxury",
+      "maldives:experience",
+      "bora-bora:overview"
+    ],
+    "expected_answer": "Maldives, Bora Bora",
+    "category": "recommendation"
+  },
+  {
+    "id": "q48",
+    "question": "Where should I take my kids on vacation?",
+    "relevant_doc_ids": [
+      "guide:family"
+    ],
+    "expected_answer": "Switzerland, Banff, Yellowstone, Kyoto, Grand Canyon",
+    "category": "recommendation"
+  },
+  {
+    "id": "q49",
+    "question": "What should I pack for a desert trip to Petra?",
+    "relevant_doc_ids": [
+      "guide:packing"
+    ],
+    "expected_answer": "Sun hat, 3–4 L water capacity, breathable long sleeves",
+    "category": "recommendation"
+  },
+  {
+    "id": "q50",
+    "question": "Good first destination for traveling alone?",
+    "relevant_doc_ids": [
+      "guide:solo"
+    ],
+    "expected_answer": "Kyoto, Iceland, Bali, Petra",
+    "category": "recommendation"
+  },
+  {
+    "id": "q51",
+    "question": "Anime pilgrimage spots in Japan?",
+    "relevant_doc_ids": [
+      "guide:anime"
+    ],
+    "expected_answer": "Mount Fuji/Kawaguchiko, Fushimi Inari, Your Name staircases",
+    "category": "recommendation"
+  },
+  {
+    "id": "q52",
+    "question": "Which cities have the best sunset views?",
+    "relevant_doc_ids": [
+      "kb:city-sunset-views"
+    ],
+    "expected_answer": "Santorini (Oia), Venice, Kyoto, Cappadocia, Bora Bora…",
+    "category": "recommendation"
+  },
+  {
+    "id": "q53",
+    "question": "I'm a foodie, where should I travel?",
+    "relevant_doc_ids": [
+      "guide:food"
+    ],
+    "expected_answer": "Kyoto, Venice, Santorini, Cappadocia, Bali",
+    "category": "recommendation"
+  },
+  {
+    "id": "q54",
+    "question": "When is the cheapest time to book international flights?",
+    "relevant_doc_ids": [
+      "kb:travel-faq"
+    ],
+    "expected_answer": "2–4 months before; 5–8 for peak season",
+    "category": "faq"
+  },
+  {
+    "id": "q55",
+    "question": "Should I tip in Japan?",
+    "relevant_doc_ids": [
+      "kb:travel-faq"
+    ],
+    "expected_answer": "Never; it can read as rude",
+    "category": "faq"
+  },
+  {
+    "id": "q56",
+    "question": "eSIM or local SIM for a two-week trip?",
+    "relevant_doc_ids": [
+      "kb:travel-faq"
+    ],
+    "expected_answer": "eSIM for trips under a month",
+    "category": "faq"
+  },
+  {
+    "id": "q57",
+    "question": "How long does golden hour last near the equator?",
+    "relevant_doc_ids": [
+      "kb:example-guides-0"
+    ],
+    "expected_answer": "Only ~20 minutes",
+    "category": "faq"
+  },
+  {
+    "id": "q58",
+    "question": "Is it a bad idea to visit Bali during monsoon season?",
+    "relevant_doc_ids": [
+      "kb:example-guides-1"
+    ],
+    "expected_answer": "No; afternoon bursts, 5+ hrs sun/day, 30–50% cheaper",
+    "category": "faq"
+  },
+  {
+    "id": "q59",
+    "question": "Somewhere I can see a mile-deep hole carved by a river",
+    "relevant_doc_ids": [
+      "grand-canyon:overview"
+    ],
+    "expected_answer": "Grand Canyon",
+    "category": "hard"
+  },
+  {
+    "id": "q60",
+    "question": "City with no cars where you get around by boat",
+    "relevant_doc_ids": [
+      "venice:overview",
+      "venice:practical"
+    ],
+    "expected_answer": "Venice",
+    "category": "hard"
+  },
+  {
+    "id": "q61",
+    "question": "Place where a hundred hot-air balloons go up at dawn",
+    "relevant_doc_ids": [
+      "cappadocia:overview",
+      "cappadocia:experience",
+      "guide:photography"
+    ],
+    "expected_answer": "Cappadocia",
+    "category": "hard"
+  },
+  {
+    "id": "q62",
+    "question": "Where did Vikings launch longships from steep sea-filled valleys?",
+    "relevant_doc_ids": [
+      "norwegian-fjords:overview"
+    ],
+    "expected_answer": "Norwegian Fjords",
+    "category": "hard"
+  },
+  {
+    "id": "q63",
+    "question": "Where can I watch wolves in winter?",
+    "relevant_doc_ids": [
+      "yellowstone:practical",
+      "yellowstone:experience"
+    ],
+    "expected_answer": "Yellowstone, Lamar Valley; winter for wolves and steam",
+    "category": "hard"
+  },
+  {
+    "id": "q64",
+    "question": "Where can I stay somewhere cheap in the Maldives without a resort?",
+    "relevant_doc_ids": [
+      "maldives:experience",
+      "guide:budget",
+      "maldives:practical"
+    ],
+    "expected_answer": "Local-island guesthouses (Thoddoo, Dhigurah)",
+    "category": "hard"
+  }
+]

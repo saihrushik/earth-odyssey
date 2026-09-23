@@ -46,3 +46,6 @@ backend/.venv/
 backend/chroma-data/
 backend/__pycache__/
 **/__pycache__/
+
+# eval run output (regenerate with backend/eval_retrieval.py)
+backend/eval/results.json

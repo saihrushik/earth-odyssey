@@ -51,10 +51,20 @@ def retrieve(query: str, top_k: int = 5) -> tuple[list[store.ScoredDoc], str]:
     candidates = store.search(vector, top_k * 3)
 
     q_tokens = _tokenize(rewritten)
+    # Length normalization (BM25-style): raw term overlap rewards long
+    # documents, which simply contain more words and so match more query
+    # tokens by luck. Without this the 500-word Wikipedia chunks outranked
+    # the tight curated docs and the re-ranker scored WORSE than no
+    # re-ranking at all (hit@1 0.75 vs 0.83 on eval/eval_set.json).
+    lengths = [max(len(c.text.split()), 1) for c in candidates] or [1]
+    ref_len = sum(lengths) / len(lengths)
+
     rescored: list[store.ScoredDoc] = []
     for c in candidates:
         d_tokens = _tokenize(c.title) | _tokenize(c.text) | {t for tag in c.tags for t in _tokenize(tag)}
-        lexical = len(q_tokens & d_tokens) / len(q_tokens) if q_tokens else 0.0
+        overlap = len(q_tokens & d_tokens) / len(q_tokens) if q_tokens else 0.0
+        doc_len = max(len(c.text.split()), 1)
+        lexical = overlap * (ref_len / (ref_len + doc_len))
         rescored.append(
             store.ScoredDoc(
                 id=c.id, title=c.title, text=c.text, tags=c.tags,

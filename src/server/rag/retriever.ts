@@ -109,11 +109,20 @@ export function condenseQuery(messages: ChatMessage[]): string {
 /** Blend vector similarity with lexical overlap — a simple, effective re-ranker. */
 function rerank(query: string, candidates: ScoredDoc[], topK: number): ScoredDoc[] {
   const qTokens = new Set(tokenize(query));
+  // Length normalization (BM25-style): raw term overlap rewards long documents,
+  // which contain more words and so match more query tokens by luck. Without it
+  // the long Wikipedia chunks outranked the tight curated docs and re-ranking
+  // scored worse than no re-ranking at all. See backend/eval_retrieval.py.
+  const lengths = candidates.map((c) => Math.max(c.doc.text.split(/\s+/).length, 1));
+  const refLen = lengths.reduce((a, b) => a + b, 0) / (lengths.length || 1) || 1;
+
   const rescored = candidates.map(({ doc, score }) => {
     const dTokens = new Set([...tokenize(doc.title), ...tokenize(doc.text), ...doc.tags.flatMap(tokenize)]);
     let overlap = 0;
     for (const t of qTokens) if (dTokens.has(t)) overlap++;
-    const lexical = qTokens.size ? overlap / qTokens.size : 0;
+    const coverage = qTokens.size ? overlap / qTokens.size : 0;
+    const docLen = Math.max(doc.text.split(/\s+/).length, 1);
+    const lexical = coverage * (refLen / (refLen + docLen));
     return { doc, score: 0.65 * score + 0.35 * lexical };
   });
   rescored.sort((a, b) => b.score - a.score);
